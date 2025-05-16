@@ -125,7 +125,9 @@
                     <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
                     {%- endif -%}
                     {%- endfor -%}
+                    {%- comment -%}
                     <a id="loginArea" href="{{ site.baseurl }}/login">Login</a>
+                    {%- endcomment -%}
                 </div>
             </nav>
             {%- endif -%}

@@ -7,7 +7,6 @@ hide: true
 menu: nav/home.html
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -22,24 +21,17 @@ menu: nav/home.html
       height: 100vh;
       font-family: sans-serif;
     }
-
     .carousel {
       width: 600px;
       height: 300px;
       overflow: hidden;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
-
     .carousel-track {
       display: flex;
       align-items: center;
-      justify-content: center;
       transition: transform 0.5s ease;
     }
-
     .slide {
       width: 200px;
       height: 200px;
@@ -51,14 +43,12 @@ menu: nav/home.html
       border-radius: 12px;
       object-fit: cover;
     }
-
     .slide.active {
       filter: none;
       opacity: 1;
       transform: scale(1.2);
       z-index: 1;
     }
-
     .arrow {
       position: absolute;
       top: 50%;
@@ -73,17 +63,14 @@ menu: nav/home.html
       border-radius: 8px;
       transition: background 0.3s;
     }
-
     .arrow:hover {
       background: rgba(255, 255, 255, 0.4);
     }
-
     .arrow.left {
-      left: -50px;
+      left: 10px;
     }
-
     .arrow.right {
-      right: -50px;
+      right: 10px;
     }
   </style>
 </head>
@@ -151,7 +138,6 @@ menu: nav/home.html
 
 </body>
 </html>
-
 
 ## Hands On Binary
 

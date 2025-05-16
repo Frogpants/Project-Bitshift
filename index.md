@@ -8,15 +8,6 @@ menu: nav/home.html
 ---
 
 <style>
-  body {
-    margin: 0;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: sans-serif;
-  }
   .carousel {
     width: 600px;
     height: 300px;

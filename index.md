@@ -3,7 +3,6 @@ layout: post
 title: Binary Lessons
 description: "Description Here"
 author: Spencer Lyons, Xavier Thompson, Justin Quach
-image: /images/mario_animation.png
 hide: true
 menu: nav/home.html
 ---

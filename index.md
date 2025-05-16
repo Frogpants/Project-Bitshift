@@ -1,8 +1,8 @@
 ---
 layout: post 
-title: Project Bitshift
-description: "Description Here"
-author: Spencer Lyons, Xavier Thompson, Justin Quach
+title: 
+description: 
+author: 
 hide: true
 menu: nav/home.html
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post 
-title: Course Descriptions
-description: An overview of Computer Science pathway at Del Norte High School
+title: Binary Lessons
+description: "Description Here"
 author: Spencer Lyons, Xavier Thompson, Justin Quach
 image: /images/mario_animation.png
 hide: true

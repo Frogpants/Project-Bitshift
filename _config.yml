@@ -17,6 +17,6 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
 header_pages:
-  - navigation/blog.md
-  - navigation/search.md
-  - navigation/logintoolkit.md
+  # - navigation/blog.md
+  # - navigation/search.md
+  # - navigation/logintoolkit.md

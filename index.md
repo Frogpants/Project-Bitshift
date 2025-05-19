@@ -19,7 +19,7 @@ menu: nav/home.html
 
   .text {
     /* Set text 50% down from its relative (original) position */
-    position: relative; 
+    position: relative;
     top: 50%;
     font-weight: bold;
   }

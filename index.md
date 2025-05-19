@@ -14,9 +14,21 @@ menu: nav/home.html
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
+    cursor: pointer;
+  }
+
+  .text {
+    /* Set text 50% down from its relative (original) position */
+    position: relative; 
+    top: 50%;
+    font-weight: bold;
   }
 </style>
 
-<div style="text-align:center">
-  <span class="dot"></span>
+<div style="text-align: center;">
+  <div class="dot">
+    <div class="text">
+      <p>Begin Experience</p> 
+    </div>
+  </div>
 </div>

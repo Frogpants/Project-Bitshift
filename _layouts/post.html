@@ -59,8 +59,8 @@ layout: base
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif %}
-      <!-- {%- if page.show_reading_time != false -%}
-       • {% include reading_time.html -%} -->
+      {%- if page.show_reading_time != false -%}
+       • {% include reading_time.html -%}
       {%- endif %}
     </p>
     <br>

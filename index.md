@@ -11,28 +11,39 @@ menu: nav/home.html
   .circle {
     height: 300px;
     width: 300px;
-    background-color: rgb(32,32,32);
-    border-radius: 50%;
+    background-color: #1e3c72; /* initial blue */
+    border-radius: 15%;
     display: inline-block;
     cursor: pointer;
-    transition: background-color 0.5s;
+    position: relative;
+    box-shadow: 0 0 25px rgba(50, 100, 255, 0.3), 0 0 60px rgba(150, 50, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.4s ease-in-out, background-color 0.6s ease-in-out, box-shadow 0.4s;
+    overflow: hidden;
   }
 
   .circle:hover {
-    background-color: rgb(40,40, 40);
-    height: 350px;
-    width: 350px;
+    transform: scale(1.08);
+    background-color: #8e24aa; /* final purple */
+    box-shadow: 0 0 30px rgba(142, 36, 170, 0.5), 0 0 70px rgba(142, 36, 170, 0.3);
   }
 
   .text {
-    /* Set text 50% down from its relative (original) position */
-    position: relative;
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-weight: bold;
+    color: white;
+    font-size: 1.6em;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    transition: color 0.3s ease-in-out;
   }
 
-
+  .circle:hover .text {
+    color: #f3e5f5;
+    text-shadow: 0 0 12px #ffffff, 0 0 25px #ce93d8;
+  }
 </style>
 
 <div style="text-align: center;">

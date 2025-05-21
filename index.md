@@ -8,6 +8,11 @@ menu: nav/home.html
 ---
 
 <style>
+  body.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
   .circle {
     height: 300px;
     width: 300px;
@@ -18,12 +23,11 @@ menu: nav/home.html
     position: relative;
     box-shadow: 0 0 25px rgba(50, 100, 255, 0.3), 0 0 60px rgba(150, 50, 255, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.4s ease-in-out, background-color 0.6s ease-in-out, box-shadow 0.4s;
     overflow: hidden;
+    transition: background-color 0.4s ease;
   }
 
   .circle:hover {
-    transform: scale(1.08);
     background-color: #8e24aa;
     box-shadow: 0 0 30px rgba(142, 36, 170, 0.5), 0 0 70px rgba(142, 36, 170, 0.3);
   }
@@ -37,44 +41,36 @@ menu: nav/home.html
     color: white;
     font-size: 1.6em;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-    transition: color 0.3s ease-in-out;
-    text-align: center;
+    pointer-events: none;
+    z-index: 2;
   }
 
-  .circle:hover .text {
-    color: #f3e5f5;
-    text-shadow: 0 0 12px #ffffff, 0 0 25px #ce93d8;
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+    pointer-events: none;
+    z-index: 1;
+    animation: particle-explode 0.8s ease-out forwards;
   }
 
-  @keyframes explode {
+  @keyframes particle-explode {
     0% {
-      transform: scale(1);
+      transform: translate(0, 0) scale(1);
       opacity: 1;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-    }
-    50% {
-      transform: scale(2);
-      opacity: 0.8;
-      box-shadow: 0 0 60px rgba(255, 0, 150, 0.5);
     }
     100% {
-      transform: scale(3);
+      transform: translate(var(--x), var(--y)) scale(0.5);
       opacity: 0;
-      box-shadow: 0 0 120px rgba(255, 0, 150, 0.0);
     }
-  }
-
-  .explode {
-    animation: explode 0.6s ease-out forwards;
-    pointer-events: none;
   }
 </style>
 
 <div style="text-align: center;">
   <div class="circle" id="startButton">
-    <div class="text">
-      <p>Begin Experience</p>
-    </div>
+    <div class="text">Begin Experience</div>
   </div>
 </div>
 
@@ -82,11 +78,37 @@ menu: nav/home.html
   const button = document.getElementById("startButton");
 
   button.addEventListener("click", () => {
-    button.classList.add("explode");
+    // Particle explosion
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
 
-    // Wait for explosion to finish, then redirect
+      // Random position
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = Math.random() * 150 + 50;
+      const x = Math.cos(angle) * radius + "px";
+      const y = Math.sin(angle) * radius + "px";
+
+      particle.style.setProperty("--x", x);
+      particle.style.setProperty("--y", y);
+
+      // Random start position inside button
+      const rect = button.getBoundingClientRect();
+      particle.style.left = rect.left + rect.width / 2 + "px";
+      particle.style.top = rect.top + rect.height / 2 + "px";
+
+      document.body.appendChild(particle);
+
+      // Remove after animation
+      setTimeout(() => particle.remove(), 800);
+    }
+
+    // Fade out entire page
+    document.body.classList.add("fade-out");
+
+    // Navigate after animation
     setTimeout(() => {
       window.location.href = "navigation/section/game.md";
-    }, 600); // matches animation duration
+    }, 1000);
   });
 </script>

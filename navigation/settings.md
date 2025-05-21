@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Settings
+title: 
 search_exclude: true
 permalink: /settings
 ---
@@ -91,7 +91,7 @@ permalink: /settings
 </style>
 
 <div id="settings-container">
-  <h2>Your Saved Preferences</h2>
+  <h2>Settings</h2>
   <p class="description">These are settings or progress saved in your browser. You can remove anything you no longer need.</p>
 
   <table id="storage-table">

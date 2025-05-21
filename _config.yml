@@ -3,7 +3,7 @@ description: "A project that teaches binary through a hands on environment. Our 
 owner_name: Spencer Lyons
 github_username: Frogpants
 github_repo: "Project-Bitshift" 
-baseurl: "/bitshift"
+baseurl: "/Project-Bitshift"
 future: true
 remote_theme: jekyll/minima
 minima:

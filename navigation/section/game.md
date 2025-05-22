@@ -13,4 +13,4 @@ menu: nav/home.html
 
 [View Fullscreen](https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-Rendering-Engine-NoPointer.html)
 
-[Download Game FIle](../original-renders/Optimized-HDRP-vHTML.html){:download}
+[Download Game FIle]({{  }}/original-renders/Optimized-HDRP.zip){:download}

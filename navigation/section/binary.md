@@ -38,6 +38,43 @@ menu: nav/home.html
     width: 180px;
   }
 
+  .bit-box, .place-value-table {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 10px;
+  }
+
+  .bit, .place {
+    padding: 10px;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+
+  .bit.on {
+    background: #27ae60;
+  }
+
+  .bit.off {
+    background: #7f8c8d;
+  }
+
+  .place {
+    background: #2c2c40;
+    color: #f9ca24;
+  }
+
+  .explanation {
+    max-width: 700px;
+    background: #2d2d44;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -73,39 +110,6 @@ menu: nav/home.html
     margin-top: 8px;
     color: #bbb;
   }
-
-  .explanation {
-    max-width: 700px;
-    background: #2d2d44;
-    padding: 20px;
-    border-radius: 12px;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .bit-box {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-
-  .bit {
-    padding: 10px;
-    background: #444;
-    border-radius: 6px;
-    font-weight: bold;
-    width: 30px;
-    text-align: center;
-  }
-
-  .bit.on {
-    background: #27ae60;
-  }
-
-  .bit.off {
-    background: #7f8c8d;
-  }
 </style>
 
 <script>
@@ -118,12 +122,14 @@ menu: nav/home.html
   const grid = document.createElement("div");
   const explanation = document.createElement("div");
   const bitBox = document.createElement("div");
+  const placeValueTable = document.createElement("div");
 
   title.textContent = "Decimal ↔ Binary Visualizer";
   inputContainer.className = "inputs";
   grid.className = "grid";
   explanation.className = "explanation";
   bitBox.className = "bit-box";
+  placeValueTable.className = "place-value-table";
 
   decInput.placeholder = "Enter Decimal";
   binInput.placeholder = "Enter Binary";
@@ -132,6 +138,7 @@ menu: nav/home.html
   inputContainer.appendChild(binInput);
   document.body.appendChild(title);
   document.body.appendChild(inputContainer);
+  document.body.appendChild(placeValueTable);
   document.body.appendChild(bitBox);
   document.body.appendChild(explanation);
   document.body.appendChild(grid);
@@ -157,23 +164,33 @@ menu: nav/home.html
     if (isNaN(dec) || dec < 0 || dec > max) {
       explanation.textContent = "Enter a number between 0 and 10.";
       bitBox.innerHTML = "";
+      placeValueTable.innerHTML = "";
       return;
     }
 
     const bin = decToBin(dec).padStart(4, "0");
+    const places = [8, 4, 2, 1];
+
+    // Update bits
     let bitsHTML = "";
     let mathExp = "";
-
     for (let i = 0; i < bin.length; i++) {
-      const bitVal = 1 << (bin.length - 1 - i);
+      const bitVal = places[i];
       const on = bin[i] === "1";
       bitsHTML += `<div class="bit ${on ? "on" : "off"}">${bin[i]}</div>`;
       if (on) {
         mathExp += (mathExp ? " + " : "") + `1×${bitVal}`;
       }
     }
-
     bitBox.innerHTML = bitsHTML;
+
+    // Update place value table
+    let placeHTML = "";
+    for (let p of places) {
+      placeHTML += `<div class="place">${p}</div>`;
+    }
+    placeValueTable.innerHTML = placeHTML;
+
     explanation.innerHTML = `<strong>${dec}</strong> in binary is <strong>${bin}</strong><br>It equals: ${mathExp || "0"}`;
   }
 
@@ -218,6 +235,5 @@ menu: nav/home.html
     grid.appendChild(card);
   }
 
-  // Default load state
   updateExplanation(NaN);
 </script>

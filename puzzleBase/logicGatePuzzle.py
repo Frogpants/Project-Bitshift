@@ -16,7 +16,19 @@ class LogicGatePuzzle:
         
     # Checks if the current solution is correct
     def check_solution(self):
-        pass
+        tmp_inputs = []
+        tmp_inputs1 = []
+        # Checks the last row
+        for i in range(self.rows+1):
+            tmp_input1 = self.puzzle[self.rows][f'input{2*i}']
+            tmp_input2 = self.puzzle[self.rows][f'input{2*i+1}']
+            tmp_inputs.append(self.puzzle[self.rows-1][f'gate{i}'].output(tmp_input1, tmp_input2))
+        for i in range(self.rows - 2, -1, -1):
+            for j in range(i*2):
+                tmp_inputs1.append(self.puzzle[i][f'gate{j}'].output(tmp_inputs[2*j], tmp_inputs[2*j+1]))
+        ### ADD LOGIC TO MAKE THIS INFINTELY SCALABLE
+        return tmp_inputs1
+        return False
     
     # Builds the puzzle by placing dictionaries inside a list, the list index represents row and 
     # columns are referenced via key-pair values (ie. 'gate0', 'gate1', etc.)
@@ -32,7 +44,7 @@ class LogicGatePuzzle:
                     if (random.randint(0,2) == 0):
                         self.locked_gates.append([i, f"gate{j}"])
                     self.puzzle[i][f"gate{j}"] = LogicGate(temp)
-            for i in range(self.rows**2):
+            for i in range(2**self.rows):
                 self.puzzle[self.rows][f"input{i}"] = random.choice([True, False])
         else:
             self.puzzle[1]["gate0"] = LogicGate("and")

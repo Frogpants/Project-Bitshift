@@ -241,3 +241,5 @@ permalink: /settings
 
   window.addEventListener("load", renderStorage);
 </script>
+
+If you'd like to learn more about our project and how it works, look out our resource page [here](https://github.com/Frogpants/Project-Bitshift/issues/3).

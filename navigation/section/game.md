@@ -11,6 +11,6 @@ menu: nav/home.html
 
 <iframe src="https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-HDRP-vHTML.html" width="100%" height="500px"></iframe>
 
-[View Fullscreen](../original-renders/Optimized-HDRP-vHTML.html)
+[View Fullscreen](https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-HDRP-vHTML.html)
 
 [Download Game FIle](../original-renders/Optimized-HDRP-vHTML.html){:download}

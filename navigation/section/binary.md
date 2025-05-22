@@ -26,7 +26,7 @@ menu: nav/home.html
   .inputs {
     display: flex;
     gap: 20px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .inputs input {
@@ -44,6 +44,7 @@ menu: nav/home.html
     gap: 15px;
     width: 100%;
     max-width: 800px;
+    margin-bottom: 2rem;
   }
 
   .card {
@@ -72,20 +73,58 @@ menu: nav/home.html
     margin-top: 8px;
     color: #bbb;
   }
+
+  .explanation {
+    max-width: 700px;
+    background: #2d2d44;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .bit-box {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .bit {
+    padding: 10px;
+    background: #444;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 30px;
+    text-align: center;
+  }
+
+  .bit.on {
+    background: #27ae60;
+  }
+
+  .bit.off {
+    background: #7f8c8d;
+  }
 </style>
 
 <script>
   const max = 10;
 
+  const title = document.createElement("h1");
   const decInput = document.createElement("input");
   const binInput = document.createElement("input");
   const inputContainer = document.createElement("div");
   const grid = document.createElement("div");
-  const title = document.createElement("h1");
+  const explanation = document.createElement("div");
+  const bitBox = document.createElement("div");
 
   title.textContent = "Decimal ↔ Binary Visualizer";
   inputContainer.className = "inputs";
   grid.className = "grid";
+  explanation.className = "explanation";
+  bitBox.className = "bit-box";
+
   decInput.placeholder = "Enter Decimal";
   binInput.placeholder = "Enter Binary";
 
@@ -93,7 +132,17 @@ menu: nav/home.html
   inputContainer.appendChild(binInput);
   document.body.appendChild(title);
   document.body.appendChild(inputContainer);
+  document.body.appendChild(bitBox);
+  document.body.appendChild(explanation);
   document.body.appendChild(grid);
+
+  function decToBin(dec) {
+    return (dec >>> 0).toString(2);
+  }
+
+  function binToDec(bin) {
+    return parseInt(bin, 2);
+  }
 
   function updateHighlight(value) {
     [...grid.children].forEach(card => {
@@ -104,12 +153,28 @@ menu: nav/home.html
     });
   }
 
-  function decToBin(dec) {
-    return (dec >>> 0).toString(2);
-  }
+  function updateExplanation(dec) {
+    if (isNaN(dec) || dec < 0 || dec > max) {
+      explanation.textContent = "Enter a number between 0 and 10.";
+      bitBox.innerHTML = "";
+      return;
+    }
 
-  function binToDec(bin) {
-    return parseInt(bin, 2);
+    const bin = decToBin(dec).padStart(4, "0");
+    let bitsHTML = "";
+    let mathExp = "";
+
+    for (let i = 0; i < bin.length; i++) {
+      const bitVal = 1 << (bin.length - 1 - i);
+      const on = bin[i] === "1";
+      bitsHTML += `<div class="bit ${on ? "on" : "off"}">${bin[i]}</div>`;
+      if (on) {
+        mathExp += (mathExp ? " + " : "") + `1×${bitVal}`;
+      }
+    }
+
+    bitBox.innerHTML = bitsHTML;
+    explanation.innerHTML = `<strong>${dec}</strong> in binary is <strong>${bin}</strong><br>It equals: ${mathExp || "0"}`;
   }
 
   decInput.addEventListener("input", () => {
@@ -117,9 +182,11 @@ menu: nav/home.html
     if (!isNaN(val) && val >= 0 && val <= max) {
       binInput.value = decToBin(val);
       updateHighlight(val);
+      updateExplanation(val);
     } else {
       binInput.value = "";
       updateHighlight(-1);
+      updateExplanation(NaN);
     }
   });
 
@@ -129,9 +196,11 @@ menu: nav/home.html
       const dec = binToDec(val);
       decInput.value = dec;
       updateHighlight(dec);
+      updateExplanation(dec);
     } else {
       decInput.value = "";
       updateHighlight(-1);
+      updateExplanation(NaN);
     }
   });
 
@@ -144,9 +213,11 @@ menu: nav/home.html
       decInput.value = i;
       binInput.value = decToBin(i);
       updateHighlight(i);
+      updateExplanation(i);
     });
     grid.appendChild(card);
   }
+
+  // Default load state
+  updateExplanation(NaN);
 </script>
-
-

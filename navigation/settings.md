@@ -7,20 +7,17 @@ permalink: /settings
 
 <style>
   body {
-    background: #121212;
-    color: #e0e0e0;
     font-family: 'Segoe UI', sans-serif;
     padding: 40px 20px;
+    transition: background 0.3s, color 0.3s;
   }
 
   #settings-container {
     max-width: 700px;
     margin: 0 auto;
-    background: #1a1a1a;
     padding: 24px;
     border-radius: 18px;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
-    transition: 0.3s ease;
+    transition: background 0.3s, box-shadow 0.3s;
   }
 
   #settings-container h2 {
@@ -50,22 +47,15 @@ permalink: /settings
     vertical-align: middle;
   }
 
-  #storage-table th {
-    color: #00c6ff;
-  }
-
   #storage-table input {
-    background: #222;
-    color: #eee;
-    border: 1px solid #333;
     padding: 8px;
     width: 100%;
     border-radius: 6px;
     font-size: 0.95rem;
+    transition: 0.2s;
   }
 
   .action-btn {
-    background: #ff4081;
     padding: 6px 12px;
     border-radius: 6px;
     border: none;
@@ -75,15 +65,9 @@ permalink: /settings
     transition: background 0.2s ease;
   }
 
-  .action-btn:hover {
-    background: #e63670;
-  }
-
   .clear-all-btn {
     display: block;
-    margin: 20px auto 0;
-    background: #00c6ff;
-    color: white;
+    margin: 12px auto;
     border: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -92,15 +76,23 @@ permalink: /settings
     transition: background 0.3s ease;
   }
 
-  .clear-all-btn:hover {
-    background: #009cd3;
-  }
-
   .no-data {
     text-align: center;
-    color: #888;
     padding: 20px 0;
     font-style: italic;
+  }
+
+  #storage-table tr:hover td {
+    background-color: #1e1e1e;
+  }
+
+  #storage-table input:focus {
+    outline: none;
+    border: 1px solid #00c6ff;
+  }
+
+  .action-btn::before {
+    content: "🗑 ";
   }
 
   @media (max-width: 600px) {
@@ -117,68 +109,95 @@ permalink: /settings
       margin-top: 10px;
     }
   }
-    /* Fade-in animation on load */
-  #settings-container {
-    animation: fadeIn 0.6s ease;
+
+  /* DARK MODE */
+  body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .dark-mode #settings-container {
+    background: #1a1a1a;
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
   }
 
-  /* Row hover effect for visual feedback */
-  #storage-table tr:hover td {
-    background-color: #1e1e1e;
+  .dark-mode #storage-table th {
+    color: #00c6ff;
   }
 
-  /* Slight input highlight on focus */
-  #storage-table input:focus {
-    outline: none;
-    border: 1px solid #00c6ff;
-    background-color: #292929;
+  .dark-mode #storage-table input {
+    background: #222;
+    color: #eee;
+    border: 1px solid #333;
   }
 
-  /* Smooth transitions for inputs and buttons */
-  #storage-table input,
-  .action-btn,
-  .clear-all-btn {
-    transition: all 0.25s ease;
+  .dark-mode .clear-all-btn {
+    background: #00c6ff;
+    color: white;
   }
 
-  /* Action button icon suggestion (optional) */
-  .action-btn::before {
-    content: "🗑 ";
+  .dark-mode .clear-all-btn:hover {
+    background: #009cd3;
   }
 
-  /* Clear button hover upgrade */
-  .clear-all-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
+  .dark-mode .action-btn {
+    background: #ff4081;
   }
 
-  /* Table column alignment tweak */
-  #storage-table td:first-child {
-    font-weight: 500;
+  .dark-mode .action-btn:hover {
+    background: #e63670;
   }
 
-  /* Better spacing for mobile buttons */
-  @media (max-width: 600px) {
-    .action-btn {
-      margin-top: 8px;
-    }
+  .dark-mode .no-data {
+    color: #888;
+  }
+
+  /* LIGHT MODE */
+  body.light-mode {
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  .light-mode #settings-container {
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 100, 255, 0.08);
+  }
+
+  .light-mode #storage-table th {
+    color: #0066cc;
+  }
+
+  .light-mode #storage-table input {
+    background: #f0f0f0;
+    color: #222;
+    border: 1px solid #ccc;
+  }
+
+  .light-mode .clear-all-btn {
+    background: #0066cc;
+    color: white;
+  }
+
+  .light-mode .clear-all-btn:hover {
+    background: #0050a0;
+  }
+
+  .light-mode .action-btn {
+    background: #ff5c8d;
+  }
+
+  .light-mode .action-btn:hover {
+    background: #d9446f;
+  }
+
+  .light-mode .no-data {
+    color: #666;
   }
 </style>
 
 <div id="settings-container">
   <h2>Your Preferences</h2>
-  <p class="description">Below are your saved preferences in this browser. You can delete individual items or clear everything.</p>
+  <p class="description">Below are your saved preferences in this browser. You can delete items or clear everything.</p>
 
   <table id="storage-table">
     <thead>
@@ -192,33 +211,60 @@ permalink: /settings
   </table>
 
   <button class="clear-all-btn" onclick="clearAll()">Clear All Preferences</button>
+  <button class="clear-all-btn" onclick="toggleTheme()">Toggle Light/Dark Mode</button>
 </div>
 
 <script>
+  function applyTheme(theme) {
+    document.body.classList.remove("light-mode", "dark-mode");
+    document.body.classList.add(`${theme}-mode`);
+    localStorage.setItem("theme", theme);
+    renderStorage(); // Ensure inputs re-render with correct colors
+  }
+
+  function toggleTheme() {
+    const current = localStorage.getItem("theme") || "dark";
+    const newTheme = current === "dark" ? "light" : "dark";
+    applyTheme(newTheme);
+  }
+
+  function initializeTheme() {
+    const saved = localStorage.getItem("theme") || "dark";
+    applyTheme(saved);
+  }
+
   function renderStorage() {
     const tbody = document.querySelector("#storage-table tbody");
     tbody.innerHTML = "";
 
-    if (localStorage.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="3" class="no-data">Nothing saved yet 💤</td></tr>`;
-      return;
+    if (localStorage.length === 0 || (localStorage.length === 1 && localStorage.getItem("theme"))) {
+      tbody.innerHTML = `<tr><td colspan="3" class="no-data">No preferences saved yet 💤</td></tr>`;
     }
 
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
+      if (key === "theme") continue;
+
       const value = localStorage.getItem(key);
 
       const row = document.createElement("tr");
-
       row.innerHTML = `
         <td>${key}</td>
         <td><input value="${value}" onchange="updateItem('${key}', this.value)"></td>
-        <td>
-          <button class="action-btn" onclick="deleteItem('${key}')">Delete</button>
-        </td>
+        <td><button class="action-btn" onclick="deleteItem('${key}')">Delete</button></td>
       `;
       tbody.appendChild(row);
     }
+
+    // Show theme setting separately
+    const themeRow = document.createElement("tr");
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    themeRow.innerHTML = `
+      <td>Theme</td>
+      <td><input value="${currentTheme}" disabled></td>
+      <td><em>Active</em></td>
+    `;
+    tbody.appendChild(themeRow);
   }
 
   function updateItem(key, newValue) {
@@ -235,11 +281,17 @@ permalink: /settings
   function clearAll() {
     if (confirm("Clear all preferences? This cannot be undone.")) {
       localStorage.clear();
+      localStorage.setItem("theme", "dark"); // Reset to dark
       renderStorage();
+      applyTheme("dark");
     }
   }
 
-  window.addEventListener("load", renderStorage);
+  window.addEventListener("load", () => {
+    initializeTheme();
+    renderStorage();
+  });
 </script>
+
 
 If you'd like to learn more about our project and how it works, look out our resource page [here](https://github.com/Frogpants/Project-Bitshift/issues/3).

@@ -43,6 +43,7 @@ menu: nav/home.html
     justify-content: center;
     margin-bottom: 1rem;
     gap: 10px;
+    flex-wrap: wrap;
   }
 
   .bit, .place {
@@ -113,7 +114,8 @@ menu: nav/home.html
 </style>
 
 <script>
-  const max = 10;
+  const maxCard = 10;
+  const inputMax = 128;
 
   const title = document.createElement("h1");
   const decInput = document.createElement("input");
@@ -131,7 +133,7 @@ menu: nav/home.html
   bitBox.className = "bit-box";
   placeValueTable.className = "place-value-table";
 
-  decInput.placeholder = "Enter Decimal";
+  decInput.placeholder = "Enter Decimal (0–128)";
   binInput.placeholder = "Enter Binary";
 
   inputContainer.appendChild(decInput);
@@ -161,19 +163,20 @@ menu: nav/home.html
   }
 
   function updateExplanation(dec) {
-    if (isNaN(dec) || dec < 0 || dec > max) {
-      explanation.textContent = "Enter a number between 0 and 10.";
+    if (isNaN(dec) || dec < 0 || dec > inputMax) {
+      explanation.textContent = "Enter a number between 0 and 128.";
       bitBox.innerHTML = "";
       placeValueTable.innerHTML = "";
       return;
     }
 
-    const bin = decToBin(dec).padStart(4, "0");
-    const places = [8, 4, 2, 1];
+    const bin = decToBin(dec).padStart(8, "0");
+    const places = [128, 64, 32, 16, 8, 4, 2, 1];
 
-    // Update bits
+    // Create visual bits
     let bitsHTML = "";
     let mathExp = "";
+
     for (let i = 0; i < bin.length; i++) {
       const bitVal = places[i];
       const on = bin[i] === "1";
@@ -182,21 +185,18 @@ menu: nav/home.html
         mathExp += (mathExp ? " + " : "") + `1×${bitVal}`;
       }
     }
+
     bitBox.innerHTML = bitsHTML;
 
-    // Update place value table
-    let placeHTML = "";
-    for (let p of places) {
-      placeHTML += `<div class="place">${p}</div>`;
-    }
-    placeValueTable.innerHTML = placeHTML;
+    // Create place value labels
+    placeValueTable.innerHTML = places.map(p => `<div class="place">${p}</div>`).join("");
 
     explanation.innerHTML = `<strong>${dec}</strong> in binary is <strong>${bin}</strong><br>It equals: ${mathExp || "0"}`;
   }
 
   decInput.addEventListener("input", () => {
     const val = parseInt(decInput.value);
-    if (!isNaN(val) && val >= 0 && val <= max) {
+    if (!isNaN(val) && val >= 0 && val <= inputMax) {
       binInput.value = decToBin(val);
       updateHighlight(val);
       updateExplanation(val);
@@ -211,9 +211,14 @@ menu: nav/home.html
     const val = binInput.value;
     if (/^[01]+$/.test(val)) {
       const dec = binToDec(val);
-      decInput.value = dec;
-      updateHighlight(dec);
-      updateExplanation(dec);
+      if (dec <= inputMax) {
+        decInput.value = dec;
+        updateHighlight(dec);
+        updateExplanation(dec);
+      } else {
+        decInput.value = "";
+        explanation.textContent = "Value exceeds 128.";
+      }
     } else {
       decInput.value = "";
       updateHighlight(-1);
@@ -221,7 +226,7 @@ menu: nav/home.html
     }
   });
 
-  for (let i = 0; i <= max; i++) {
+  for (let i = 0; i <= maxCard; i++) {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.dec = i;

@@ -108,7 +108,7 @@ menu: nav/home.html
 
     // Navigate after animation
     setTimeout(() => {
-      window.location.href = "https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-Rendering-Engine-NoPointer.html";
+      window.location.href = "https://frogpants.github.io/Project-Bitshift/original-renders/First-Demo-Project.html";
     }, 1000);
   });
 </script>

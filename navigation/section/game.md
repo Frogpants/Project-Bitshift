@@ -9,8 +9,8 @@ menu: nav/home.html
 
 ## Game Interaction Demo
 
-<iframe src="https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-Rendering-Engine-NoPointer.html" width="100%" height="500px"></iframe>
+<iframe src="https://frogpants.github.io/Project-Bitshift/original-renders/First-Demo-Project.html" allow="fullscreen; pointer-lock" width="100%" height="500px"></iframe>
 
-[View Fullscreen](https://frogpants.github.io/Project-Bitshift/original-renders/Optimized-Rendering-Engine-NoPointer.html)
+[View Fullscreen](https://frogpants.github.io/Project-Bitshift/original-renders/First-Demo-Project.html)
 
-[Download Game FIle]({{  }}/original-renders/Optimized-HDRP.zip){:download}
+<a href="/original-renders/First-Demo-Project.html" download>Download Game File</a>

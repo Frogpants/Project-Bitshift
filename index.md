@@ -112,3 +112,5 @@ menu: nav/home.html
     }, 1000);
   });
 </script>
+
+Make sure to check out our Github Page!

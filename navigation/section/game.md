@@ -13,4 +13,4 @@ menu: nav/home.html
 
 [View Fullscreen](https://frogpants.github.io/Project-Bitshift/original-renders/First-Demo-Project.html)
 
-[Download Game FIle](https://frogpants.github.io/Project-Bitshift/original-renders/First-Demo-Project.html){:download}
+<a href="/original-renders/First-Demo-Project.html" download>Download Game File</a>

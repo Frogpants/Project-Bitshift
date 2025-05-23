@@ -238,7 +238,7 @@ permalink: /settings
     tbody.innerHTML = "";
 
     if (localStorage.length === 0 || (localStorage.length === 1 && localStorage.getItem("theme"))) {
-      tbody.innerHTML = `<tr><td colspan="3" class="no-data">No preferences saved yet 💤</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="3" class="no-data">No progress made yet :(</td></tr>`;
     }
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -249,7 +249,7 @@ permalink: /settings
 
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${key}</td>
+        <td>Progress</td>
         <td><input value="${value}" onchange="updateItem('${key}', this.value)"></td>
         <td><button class="action-btn" onclick="deleteItem('${key}')">Delete</button></td>
       `;
@@ -279,7 +279,7 @@ permalink: /settings
   }
 
   function clearAll() {
-    if (confirm("Clear all preferences? This cannot be undone.")) {
+    if (confirm("Clear all saved data? This cannot be undone.")) {
       localStorage.clear();
       localStorage.setItem("theme", "dark"); // Reset to dark
       renderStorage();

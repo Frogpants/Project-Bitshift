@@ -54,7 +54,7 @@ class LogicGatePuzzle:
             self.puzzle.append({})
         if (self.rows > 2):
             for i  in range(self.rows):
-                for j in range(i*2):
+                for j in range(2**i):
                     temp = random.choice(['and','nand','or','nor','xor'])
                     if (random.randint(0,2) == 0):
                         self.locked_gates.append([i, f"gate{j}"])
@@ -144,9 +144,3 @@ class LogicGate:
             
     def change_gate(self, gate):
         self.gate = gate
-        
-def test(rows):
-    puzzle = LogicGatePuzzle(rows)
-    print(puzzle.show_puzzle())
-    
-test(3)

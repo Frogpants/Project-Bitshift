@@ -13,4 +13,6 @@ menu: nav/home.html
 
 [View Fullscreen](https://frogpants.github.io/Project-Bitshift/current-project-renders/Bitshift-Updated-Demo2.html)
 
-<a href="/current-project-renders/Bitshift-Updated-Demo2.html" download>Download Game File</a>
+### Download on Itch.io
+
+<iframe frameborder="0" src="https://itch.io/embed/3586896?linkback=true&amp;bg_color=1b1e1e&amp;fg_color=ffffff" width="552" height="167"><a href="https://frogpants.itch.io/bitshift-0101">Bitshift: 0101 by Frogpants</a></iframe>

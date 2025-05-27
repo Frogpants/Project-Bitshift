@@ -202,36 +202,6 @@ menu: nav/home.html
 
   autoSlide = setInterval(nextSlide, 3000);
   updateSlides();
-
-  const button = document.getElementById("startButton");
-
-  button.addEventListener("click", () => {
-    // Particle explosion
-    for (let i = 0; i < 50; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-
-      const angle = Math.random() * 2 * Math.PI;
-      const radius = Math.random() * 150 + 50;
-      const x = Math.cos(angle) * radius + "px";
-      const y = Math.sin(angle) * radius + "px";
-
-      particle.style.setProperty("--x", x);
-      particle.style.setProperty("--y", y);
-
-      const rect = button.getBoundingClientRect();
-      particle.style.left = rect.left + rect.width / 2 + "px";
-      particle.style.top = rect.top + rect.height / 2 + "px";
-
-      document.body.appendChild(particle);
-      setTimeout(() => particle.remove(), 800);
-    }
-
-    document.body.classList.add("fade-out");
-    setTimeout(() => {
-      window.location.href = "https://frogpants.github.io/Project-Bitshift/current-project-renders/Bitshift-Update-v1.0.0.html";
-    }, 1000);
-  });
 </script>
 
 <p style="text-align: center; margin-top: 40px;">Make sure to check out our <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #42a5f5;">GitHub Page</a>!</p>

@@ -8,9 +8,74 @@ menu: nav/home.html
 ---
 
 <style>
-  body.fade-out {
-    opacity: 0;
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     transition: opacity 1s ease;
+  }
+
+  .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+    width: 700px;
+  }
+
+  .carousel-window {
+    width: 660px;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s ease;
+  }
+
+  .slide {
+    width: 200px;
+    height: 200px;
+    margin: 0 10px;
+    transition: all 0.5s ease;
+    filter: blur(2px);
+    opacity: 0.5;
+    transform: scale(0.8);
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .slide.active {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+
+  .arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .arrow.left {
+    margin-right: 10px;
+  }
+
+  .arrow.right {
+    margin-left: 10px;
   }
 
   .circle {
@@ -25,6 +90,7 @@ menu: nav/home.html
     border: 2px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     transition: background-color 0.4s ease;
+    margin-bottom: 40px;
   }
 
   .circle:hover {
@@ -66,15 +132,77 @@ menu: nav/home.html
       opacity: 0;
     }
   }
+
+  body.fade-out {
+    opacity: 0;
+  }
 </style>
 
-<div style="text-align: center;">
-  <div class="circle" id="startButton">
-    <div class="text">Begin Experience</div>
+<div class="circle" id="startButton">
+  <div class="text">Begin Experience</div>
+</div>
+
+<div class="carousel">
+  <button class="arrow left">&#8592;</button>
+  <div class="carousel-window">
+    <div class="carousel-track">
+      <img src="images/binary/color_code.png" class="slide" />
+      <img src="images/binary/color_code.png" class="slide" />
+      <img src="images/binary/color_code.png" class="slide" />
+      <img src="images/binary/color_code.png" class="slide" />
+    </div>
   </div>
+  <button class="arrow right">&#8594;</button>
 </div>
 
 <script>
+  const slides = document.querySelectorAll('.slide');
+  const leftBtn = document.querySelector('.arrow.left');
+  const rightBtn = document.querySelector('.arrow.right');
+  let index = 0;
+  let autoSlide;
+
+  function updateSlides() {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) {
+        slide.classList.add('active');
+      }
+    });
+
+    const track = document.querySelector('.carousel-track');
+    const offset = (index * -220) + 190;
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlides();
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlides();
+  }
+
+  leftBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
+  rightBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextSlide, 3000);
+  }
+
+  autoSlide = setInterval(nextSlide, 3000);
+  updateSlides();
+
   const button = document.getElementById("startButton");
 
   button.addEventListener("click", () => {
@@ -83,7 +211,6 @@ menu: nav/home.html
       const particle = document.createElement("div");
       particle.className = "particle";
 
-      // Random position
       const angle = Math.random() * 2 * Math.PI;
       const radius = Math.random() * 150 + 50;
       const x = Math.cos(angle) * radius + "px";
@@ -92,25 +219,19 @@ menu: nav/home.html
       particle.style.setProperty("--x", x);
       particle.style.setProperty("--y", y);
 
-      // Random start position inside button
       const rect = button.getBoundingClientRect();
       particle.style.left = rect.left + rect.width / 2 + "px";
       particle.style.top = rect.top + rect.height / 2 + "px";
 
       document.body.appendChild(particle);
-
-      // Remove after animation
       setTimeout(() => particle.remove(), 800);
     }
 
-    // Fade out entire page
     document.body.classList.add("fade-out");
-
-    // Navigate after animation
     setTimeout(() => {
       window.location.href = "https://frogpants.github.io/Project-Bitshift/current-project-renders/Bitshift-Update-v1.0.0.html";
     }, 1000);
   });
 </script>
 
-Make sure to check out our Github Page!
+<p style="text-align: center; margin-top: 40px;">Make sure to check out our <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #42a5f5;">GitHub Page</a>!</p>

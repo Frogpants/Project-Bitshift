@@ -91,7 +91,7 @@ menu: nav/home.html
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #555;
+    background-color: white;
     transition: background-color 0.3s ease;
     cursor: pointer;
   }

@@ -56,6 +56,7 @@ menu: nav/home.html
     object-fit: cover;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
     border: 2px solid transparent;
+    cursor: pointer;
   }
 
   .slide.active {
@@ -118,6 +119,48 @@ menu: nav/home.html
       font-size: 2rem;
     }
   }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-image {
+    margin: auto;
+    display: block;
+    max-width: 95%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00ffe7aa;
+    transition: transform 0.3s ease;
+  }
+
+  .close {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    color: #00ffe7;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    text-shadow: 0 0 10px #00ffe7;
+  }
+
+  .close:hover {
+    color: #42a5f5;
+  }
 </style>
 
 <div class="carousel">
@@ -151,6 +194,12 @@ menu: nav/home.html
   <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #00ffe7;">GitHub Page</a>!
 </p>
 
+<!-- Fullscreen Modal -->
+<div class="modal" id="imageModal">
+  <span class="close">&times;</span>
+  <img class="modal-image" id="modalImg" />
+</div>
+
 <script>
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
@@ -158,6 +207,9 @@ menu: nav/home.html
   const leftBtn = document.querySelector('.arrow.left');
   const rightBtn = document.querySelector('.arrow.right');
   const carousel = document.querySelector('.carousel');
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector(".close");
 
   let index = 0;
   let autoSlide;
@@ -222,4 +274,22 @@ menu: nav/home.html
 
   autoSlide = setInterval(nextSlide, 3000);
   updateSlides();
+
+  // Modal logic
+  slides.forEach((slide) => {
+    slide.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = slide.src;
+    });
+  });
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 </script>

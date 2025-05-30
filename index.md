@@ -83,9 +83,9 @@ menu: nav/home.html
     background-color: #333;
   }
 
-  /* Modal Styles */
+  /* Modal Styles with Transitions */
   .modal {
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -95,12 +95,28 @@ menu: nav/home.html
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .modal.visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .modal-image {
     max-width: 90%;
     max-height: 90%;
     border-radius: 8px;
+    transform: scale(0.9);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  .modal.visible .modal-image {
+    transform: scale(1);
+    opacity: 1;
   }
 
   .close {
@@ -210,6 +226,8 @@ menu: nav/home.html
     } else if (e.key === 'ArrowLeft') {
       prevSlide();
       resetAutoSlide();
+    } else if (e.key === 'Escape') {
+      modal.classList.remove("visible");
     }
   });
 
@@ -224,21 +242,21 @@ menu: nav/home.html
   autoSlide = setInterval(nextSlide, 3000);
   updateSlides();
 
-  // Modal logic
+  // Modal logic with transitions
   slides.forEach((slide) => {
     slide.addEventListener("click", () => {
-      modal.style.display = "flex";
       modalImg.src = slide.src;
+      modal.classList.add("visible");
     });
   });
 
   closeBtn.onclick = () => {
-    modal.style.display = "none";
+    modal.classList.remove("visible");
   };
 
   window.addEventListener("click", (event) => {
     if (event.target === modal) {
-      modal.style.display = "none";
+      modal.classList.remove("visible");
     }
   });
 </script>

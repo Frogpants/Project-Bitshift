@@ -10,7 +10,8 @@ menu: nav/home.html
 <style>
   body {
     font-family: sans-serif;
-    color: #333;
+    background: #1e1e1e;
+    color: #eee;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -35,7 +36,6 @@ menu: nav/home.html
   .carousel-track {
     display: flex;
     transition: transform 0.4s ease;
-    height: auto;
   }
 
   .slide {
@@ -59,7 +59,7 @@ menu: nav/home.html
     background: none;
     border: none;
     font-size: 2rem;
-    color: #333;
+    color: #eee;
     cursor: pointer;
     padding: 0 10px;
   }
@@ -75,15 +75,15 @@ menu: nav/home.html
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #aaa;
+    background-color: #777;
     cursor: pointer;
   }
 
   .dot.active {
-    background-color: #333;
+    background-color: #eee;
   }
 
-  /* Modal Styles with Transitions */
+  /* Modal Styles */
   .modal {
     display: flex;
     position: fixed;
@@ -97,7 +97,7 @@ menu: nav/home.html
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.6s ease;
   }
 
   .modal.visible {
@@ -109,9 +109,9 @@ menu: nav/home.html
     max-width: 90%;
     max-height: 90%;
     border-radius: 8px;
-    transform: scale(0.9);
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: scale(0.85);
     opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
   }
 
   .modal.visible .modal-image {
@@ -127,8 +127,22 @@ menu: nav/home.html
     color: white;
     cursor: pointer;
   }
+
+  /* Binary Text Animation */
+  .binary-anim {
+    font-family: monospace;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 40px;
+    color: #89caff;
+    letter-spacing: 1px;
+    min-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 </style>
 
+<!-- Carousel -->
 <div class="carousel">
   <button class="arrow left">&#8592;</button>
   <div class="carousel-window">
@@ -145,6 +159,7 @@ menu: nav/home.html
   <button class="arrow right">&#8594;</button>
 </div>
 
+<!-- Dots -->
 <div class="dots">
   <span class="dot active"></span>
   <span class="dot"></span>
@@ -155,8 +170,12 @@ menu: nav/home.html
   <span class="dot"></span>
 </div>
 
+<!-- Binary Text Animation -->
+<div class="binary-anim" id="binaryAnim"></div>
+
+<!-- Footer -->
 <p style="text-align: center; margin-top: 30px;">
-  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank">GitHub</a>.
+  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
 </p>
 
 <!-- Fullscreen Modal -->
@@ -242,7 +261,7 @@ menu: nav/home.html
   autoSlide = setInterval(nextSlide, 3000);
   updateSlides();
 
-  // Modal logic with transitions
+  // Modal logic
   slides.forEach((slide) => {
     slide.addEventListener("click", () => {
       modalImg.src = slide.src;
@@ -259,4 +278,36 @@ menu: nav/home.html
       modal.classList.remove("visible");
     }
   });
+
+  // Binary decoding animation
+  const binaryTarget = document.getElementById("binaryAnim");
+  const finalText = "Project Bitshift Initialized...";
+  const delay = 75;
+
+  let output = "";
+  let indexText = 0;
+
+  function animateBinary() {
+    if (indexText < finalText.length) {
+      const char = finalText[indexText];
+      const binary = char.charCodeAt(0).toString(2).padStart(8, '0');
+      let step = 0;
+
+      const interval = setInterval(() => {
+        if (step < binary.length) {
+          binaryTarget.textContent = output + binary.slice(0, step + 1).padEnd(8, '█');
+          step++;
+        } else {
+          clearInterval(interval);
+          output += char;
+          indexText++;
+          animateBinary();
+        }
+      }, delay);
+    } else {
+      binaryTarget.textContent = output;
+    }
+  }
+
+  animateBinary();
 </script>

@@ -298,7 +298,7 @@ menu: nav/home.html
   // Smoother binary typing animation
   const binaryTarget = document.getElementById("binaryAnim");
   const finalText = "Project Bitshift Initialized...";
-  const binaryDelay = 50;
+  const binaryDelay = 15;
   let currentText = "";
   let textIndex = 0;
 

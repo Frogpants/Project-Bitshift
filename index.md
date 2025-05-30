@@ -36,6 +36,7 @@ menu: nav/home.html
   .carousel-track {
     display: flex;
     transition: transform 0.4s ease;
+    height: auto;
   }
 
   .slide {

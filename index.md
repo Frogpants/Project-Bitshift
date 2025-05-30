@@ -128,7 +128,7 @@ menu: nav/home.html
     cursor: pointer;
   }
 
-  /* Binary Text Animation */
+  /* Binary Animation */
   .binary-anim {
     font-family: monospace;
     font-size: 1.2rem;
@@ -139,6 +139,22 @@ menu: nav/home.html
     min-height: 1.5em;
     white-space: nowrap;
     overflow: hidden;
+    position: relative;
+  }
+
+  .binary-anim::after {
+    content: "|";
+    animation: blink 1s step-end infinite;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    color: #89caff;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
 </style>
 
@@ -279,35 +295,42 @@ menu: nav/home.html
     }
   });
 
-  // Binary decoding animation
+  // Smoother binary typing animation
   const binaryTarget = document.getElementById("binaryAnim");
   const finalText = "Project Bitshift Initialized...";
-  const delay = 75;
+  const binaryDelay = 50;
+  let currentText = "";
+  let textIndex = 0;
 
-  let output = "";
-  let indexText = 0;
+  function showBinaryChar(char, callback) {
+    const binary = char.charCodeAt(0).toString(2).padStart(8, '0');
+    let i = 0;
 
-  function animateBinary() {
-    if (indexText < finalText.length) {
-      const char = finalText[indexText];
-      const binary = char.charCodeAt(0).toString(2).padStart(8, '0');
-      let step = 0;
+    function step() {
+      if (i <= binary.length) {
+        const shown = binary.slice(0, i) + ' '.repeat(8 - i);
+        binaryTarget.textContent = currentText + shown;
+        i++;
+        setTimeout(step, binaryDelay);
+      } else {
+        currentText += char;
+        callback();
+      }
+    }
 
-      const interval = setInterval(() => {
-        if (step < binary.length) {
-          binaryTarget.textContent = output + binary.slice(0, step + 1).padEnd(8, '█');
-          step++;
-        } else {
-          clearInterval(interval);
-          output += char;
-          indexText++;
-          animateBinary();
-        }
-      }, delay);
+    step();
+  }
+
+  function animateBinaryText() {
+    if (textIndex < finalText.length) {
+      showBinaryChar(finalText[textIndex], () => {
+        textIndex++;
+        animateBinaryText();
+      });
     } else {
-      binaryTarget.textContent = output;
+      binaryTarget.textContent = currentText;
     }
   }
 
-  animateBinary();
+  animateBinaryText();
 </script>

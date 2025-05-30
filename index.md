@@ -10,7 +10,7 @@ menu: nav/home.html
 <style>
   body {
     font-family: 'Segoe UI', sans-serif;
-    background: #121212;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: white;
     margin: 0;
     padding: 0;
@@ -52,9 +52,10 @@ menu: nav/home.html
     filter: blur(2px);
     opacity: 0.4;
     transform: scale(0.75);
-    border-radius: 16px;
+    border-radius: 18px;
     object-fit: cover;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    border: 2px solid transparent;
   }
 
   .slide.active {
@@ -62,43 +63,48 @@ menu: nav/home.html
     opacity: 1;
     transform: scale(1.15);
     z-index: 2;
+    border-color: #00ffe7;
+    box-shadow: 0 0 20px #00ffe7aa;
   }
 
   .arrow {
     background: none;
     border: none;
     font-size: 2.5rem;
-    color: white;
+    color: #00ffe7;
     cursor: pointer;
     z-index: 3;
-    padding: 0 10px;
-    transition: transform 0.3s ease;
+    padding: 0 12px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-shadow: 0 0 8px #00ffe7;
   }
 
   .arrow:hover {
     transform: scale(1.2);
+    color: #42a5f5;
   }
 
   .dots {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: white;
-    opacity: 0.6;
+    background-color: #888;
+    opacity: 0.7;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s;
   }
 
   .dot.active {
-    background-color: #42a5f5;
-    transform: scale(1.2);
+    background-color: #00ffe7;
+    transform: scale(1.3);
+    box-shadow: 0 0 6px #00ffe7aa;
     opacity: 1;
   }
 
@@ -142,7 +148,7 @@ menu: nav/home.html
 
 <p style="text-align: center; margin-top: 40px;">
   Make sure to check out our
-  <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #42a5f5;">GitHub Page</a>!
+  <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #00ffe7;">GitHub Page</a>!
 </p>
 
 <script>

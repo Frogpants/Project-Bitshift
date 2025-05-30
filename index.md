@@ -1,10 +1,10 @@
----  
-layout: post  
-title:  
-description:  
-author:  
-hide: true  
-menu: nav/home.html  
+---
+layout: post
+title:
+description:
+author:
+hide: true
+menu: nav/home.html
 ---
 
 <style>
@@ -29,55 +29,54 @@ menu: nav/home.html
     margin-top: 40px;
     position: relative;
     width: 90%;
-    max-width: 700px;
+    max-width: 900px;
   }
 
   .carousel-window {
-    width: 660px;
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
   }
 
   .carousel-track {
     display: flex;
     align-items: center;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
   }
 
   .slide {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin: 0 10px;
-    transition: all 0.5s ease, filter 0.3s ease;
+    transition: all 0.5s ease;
     filter: blur(2px);
-    opacity: 0.5;
-    transform: scale(0.6);
-    border-radius: 12px;
+    opacity: 0.4;
+    transform: scale(0.75);
+    border-radius: 16px;
     object-fit: cover;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   }
 
   .slide.active {
     filter: none;
     opacity: 1;
-    transform: scale(1);
-    z-index: 1;
+    transform: scale(1.15);
+    z-index: 2;
   }
 
   .arrow {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: white;
     cursor: pointer;
-    z-index: 2;
+    z-index: 3;
+    padding: 0 10px;
+    transition: transform 0.3s ease;
   }
 
-  .arrow.left {
-    margin-right: 10px;
-  }
-
-  .arrow.right {
-    margin-left: 10px;
+  .arrow:hover {
+    transform: scale(1.2);
   }
 
   .dots {
@@ -88,22 +87,29 @@ menu: nav/home.html
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: white;
-    transition: background-color 0.3s ease;
+    opacity: 0.6;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
   }
 
   .dot.active {
     background-color: #42a5f5;
+    transform: scale(1.2);
+    opacity: 1;
   }
 
   @media (max-width: 768px) {
     .slide {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
+    }
+
+    .arrow {
+      font-size: 2rem;
     }
   }
 </style>
@@ -135,7 +141,7 @@ menu: nav/home.html
 </div>
 
 <p style="text-align: center; margin-top: 40px;">
-  Make sure to check out our 
+  Make sure to check out our
   <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #42a5f5;">GitHub Page</a>!
 </p>
 
@@ -158,7 +164,7 @@ menu: nav/home.html
       dot.classList.toggle('active', i === index);
     });
 
-    const offset = (index * -220) + 190;
+    const offset = (index * -240) + (carousel.offsetWidth / 2 - 110);
     track.style.transform = `translateX(${offset}px)`;
   }
 

@@ -183,9 +183,36 @@ menu: nav/home.html
       opacity: 0;
     }
   }
+
+  .parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+              radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: drift 60s linear infinite;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px);
+  }
+}
+
 </style>
 
 
+<div class="parallax-bg"></div>
 
 <!-- Carousel -->
 <div class="carousel">
@@ -373,6 +400,13 @@ menu: nav/home.html
   
   function revealAnswer() {
   document.getElementById("puzzle-answer").style.display = "block";
+
+    document.addEventListener("mousemove", (e) => {
+    const bg = document.querySelector(".parallax-bg");
+    const x = (e.clientX / window.innerWidth - 0.5) * 40;
+    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+    bg.style.transform = `translate(${x}px, ${y}px)`;
+  });
 }
 
 </script>

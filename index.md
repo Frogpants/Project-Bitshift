@@ -209,6 +209,48 @@ menu: nav/home.html
   }
 }
 
+  .controls-panel {
+  margin-top: 50px;
+  padding: 20px 30px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #ccc;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(137, 202, 255, 0.05);
+}
+
+.controls-panel h2 {
+  color: #89caff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', monospace;
+}
+
+.controls-panel ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.controls-panel li {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  font-family: monospace;
+}
+
+kbd {
+  background: #333;
+  color: #89caff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin: 0 2px;
+  display: inline-block;
+}
+
+
 </style>
 
 
@@ -252,6 +294,20 @@ menu: nav/home.html
   <span class="close">&times;</span>
   <img class="modal-image" id="modalImg" />
 </div>
+
+<div class="controls-panel">
+  <h2>Controls</h2>
+  <ul>
+    <li><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> — Move</li>
+    <li><kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> — Look around</li>
+    <li><kbd>Space</kbd> — Enter binary puzzle</li>
+    <li><kbd>F</kbd> — Toggle flashlight</li>
+    <li><kbd>Q</kbd> — Open walkie talkie</li>
+    <li><kbd>Esc</kbd> — Close or pause</li>
+    <li><kbd>Click</kbd> — Interact</li>
+  </ul>
+</div>
+
 
 <script>
   const slides = document.querySelectorAll('.slide');

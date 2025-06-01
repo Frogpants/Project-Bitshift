@@ -9,7 +9,7 @@ menu: nav/home.html
 
 <style>
   body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: #1e1e1e;
     color: #eee;
     margin: 0;
@@ -20,6 +20,7 @@ menu: nav/home.html
   }
 
   .carousel {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,55 +36,78 @@ menu: nav/home.html
 
   .carousel-track {
     display: flex;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
   .slide {
     width: 200px;
     height: 200px;
     margin: 0 10px;
-    opacity: 0.5;
+    opacity: 0.4;
     transform: scale(0.8);
-    transition: all 0.3s ease;
-    border-radius: 8px;
+    transition: all 0.4s ease-in-out;
+    border-radius: 12px;
     object-fit: cover;
     cursor: pointer;
+    filter: brightness(0.7);
   }
 
   .slide.active {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.1);
+    filter: brightness(1) drop-shadow(0 0 10px rgba(255,255,255,0.15));
+    z-index: 1;
   }
 
   .arrow {
-    background: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
     border: none;
     font-size: 2rem;
     color: #eee;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel:hover .arrow {
+    opacity: 1;
+  }
+
+  .arrow.left {
+    left: 10px;
+  }
+
+  .arrow.right {
+    right: 10px;
   }
 
   .dots {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    gap: 8px;
+    margin-top: 14px;
+    gap: 10px;
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background-color: #777;
+    background-color: #555;
+    transition: background-color 0.3s ease;
     cursor: pointer;
   }
 
   .dot.active {
-    background-color: #eee;
+    background-color: #fff;
   }
 
-  /* Modal Styles */
+  /* Modal */
   .modal {
     display: flex;
     position: fixed;
@@ -97,7 +121,7 @@ menu: nav/home.html
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.4s ease;
   }
 
   .modal.visible {
@@ -108,10 +132,10 @@ menu: nav/home.html
   .modal-image {
     max-width: 90%;
     max-height: 90%;
-    border-radius: 8px;
-    transform: scale(0.85);
+    border-radius: 10px;
+    transform: scale(0.8);
     opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
   }
 
   .modal.visible .modal-image {
@@ -128,7 +152,6 @@ menu: nav/home.html
     cursor: pointer;
   }
 
-  /* Binary Animation */
   .binary-anim {
     font-family: monospace;
     font-size: 1.2rem;
@@ -157,6 +180,7 @@ menu: nav/home.html
     }
   }
 </style>
+
 
 <!-- Carousel -->
 <div class="carousel">

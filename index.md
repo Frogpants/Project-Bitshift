@@ -260,11 +260,16 @@ kbd {
   text-align: center;
 }
 
-  .items-dictionary-wrapper {
+ .items-dictionary-wrapper {
   margin-top: 50px;
   max-width: 600px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .toggle-items {
   background-color: #111;

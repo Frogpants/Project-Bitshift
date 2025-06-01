@@ -213,6 +213,27 @@ menu: nav/home.html
 <!-- Binary Text Animation -->
 <div class="binary-anim" id="binaryAnim"></div>
 
+<!-- Puzzle of the Day -->
+<div id="puzzle-section" style="margin-top: 50px; max-width: 600px; text-align: center; border: 1px solid #444; padding: 20px; border-radius: 10px; background-color: #2a2a2a;">
+  <h2 style="color: #89caff;">🧠 Puzzle of the Day</h2>
+  <p style="font-family: monospace; color: #eee; font-size: 1rem;">
+    A binary string is hidden in this encoded message:<br><br>
+    <code>01100001 00111111 01100010</code><br><br>
+    What is the ASCII translation?<br>
+    <em>(Hint: Binary to ASCII)</em>
+  </p>
+  <button onclick="revealAnswer()" style="margin-top: 10px; padding: 10px 20px; font-family: monospace; background: #89caff; border: none; border-radius: 6px; color: #000; cursor: pointer;">
+    Reveal Answer
+  </button>
+  <p id="puzzle-answer" style="margin-top: 10px; color: #89caff; font-weight: bold; display: none;">Answer: <code>a?b</code></p>
+</div>
+
+<!-- Footer -->
+<p style="text-align: center; margin-top: 30px;">
+  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
+</p>
+
+
 <!-- Footer -->
 <p style="text-align: center; margin-top: 30px;">
   View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
@@ -344,17 +365,9 @@ menu: nav/home.html
 
     step();
   }
+  
+  function revealAnswer() {
+  document.getElementById("puzzle-answer").style.display = "block";
+}
 
-  function animateBinaryText() {
-    if (textIndex < finalText.length) {
-      showBinaryChar(finalText[textIndex], () => {
-        textIndex++;
-        animateBinaryText();
-      });
-    } else {
-      binaryTarget.textContent = currentText;
-    }
-  }
-
-  animateBinaryText();
 </script>

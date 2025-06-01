@@ -347,6 +347,4 @@ menu: nav/home.html
       modal.classList.remove("visible");
     }
   });
-}
-
 </script>

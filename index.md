@@ -242,30 +242,6 @@ menu: nav/home.html
   <span class="dot"></span>
 </div>
 
-<!-- Binary Text Animation -->
-<div class="binary-anim" id="binaryAnim"></div>
-
-<!-- Puzzle of the Day -->
-<div id="puzzle-section" style="margin-top: 50px; max-width: 600px; text-align: center; border: 1px solid #444; padding: 20px; border-radius: 10px; background-color: #2a2a2a;">
-  <h2 style="color: #89caff;">🧠 Puzzle of the Day</h2>
-  <p style="font-family: monospace; color: #eee; font-size: 1rem;">
-    A binary string is hidden in this encoded message:<br><br>
-    <code>01100001 00111111 01100010</code><br><br>
-    What is the ASCII translation?<br>
-    <em>(Hint: Binary to ASCII)</em>
-  </p>
-  <button onclick="revealAnswer()" style="margin-top: 10px; padding: 10px 20px; font-family: monospace; background: #89caff; border: none; border-radius: 6px; color: #000; cursor: pointer;">
-    Reveal Answer
-  </button>
-  <p id="puzzle-answer" style="margin-top: 10px; color: #89caff; font-weight: bold; display: none;">Answer: <code>a?b</code></p>
-</div>
-
-<!-- Footer -->
-<p style="text-align: center; margin-top: 30px;">
-  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
-</p>
-
-
 <!-- Footer -->
 <p style="text-align: center; margin-top: 30px;">
   View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
@@ -370,42 +346,6 @@ menu: nav/home.html
     if (event.target === modal) {
       modal.classList.remove("visible");
     }
-  });
-
-  // Smoother binary typing animation
-  const binaryTarget = document.getElementById("binaryAnim");
-  const finalText = "Project Bitshift Initialized...";
-  const binaryDelay = 15;
-  let currentText = "";
-  let textIndex = 0;
-
-  function showBinaryChar(char, callback) {
-    const binary = char.charCodeAt(0).toString(2).padStart(8, '0');
-    let i = 0;
-
-    function step() {
-      if (i <= binary.length) {
-        const shown = binary.slice(0, i) + ' '.repeat(8 - i);
-        binaryTarget.textContent = currentText + shown;
-        i++;
-        setTimeout(step, binaryDelay);
-      } else {
-        currentText += char;
-        callback();
-      }
-    }
-
-    step();
-  }
-  
-  function revealAnswer() {
-  document.getElementById("puzzle-answer").style.display = "block";
-
-    document.addEventListener("mousemove", (e) => {
-    const bg = document.querySelector(".parallax-bg");
-    const x = (e.clientX / window.innerWidth - 0.5) * 40;
-    const y = (e.clientY / window.innerHeight - 0.5) * 40;
-    bg.style.transform = `translate(${x}px, ${y}px)`;
   });
 }
 

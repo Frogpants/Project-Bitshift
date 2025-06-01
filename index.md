@@ -259,6 +259,65 @@ kbd {
   margin-top: 40px;
   text-align: center;
 }
+
+  .items-dictionary-wrapper {
+  margin-top: 50px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.toggle-items {
+  background-color: #111;
+  color: #89caff;
+  border: 2px solid #89caff;
+  padding: 10px 20px;
+  font-family: monospace;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-items:hover {
+  background-color: #1f2a38;
+  color: white;
+  transform: scale(1.02);
+}
+
+.items-index {
+  margin-top: 20px;
+  padding: 20px 30px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #ccc;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(137, 202, 255, 0.05);
+  font-family: monospace;
+}
+
+.items-index h2 {
+  color: #89caff;
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.items-index ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.items-index li {
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.item-desc {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
 </style>
 
 
@@ -319,6 +378,37 @@ kbd {
     </ul>
   </div>
 </div>
+
+<div class="items-dictionary-wrapper">
+  <button class="toggle-items" onclick="toggleItems()">Open Tech & Items Dictionary</button>
+
+  <div class="items-index" id="itemsIndex" style="display: none;">
+    <h2>In-Game Tech & Items Index</h2>
+    <ul>
+      <li>
+        <strong>Flashlight</strong><br>
+        <span class="item-desc">Used to illuminate dark data zones. Essential for low-visibility puzzles. Toggle with <kbd>F</kbd>.</span>
+      </li>
+      <li>
+        <strong>Walkie Talkie</strong><br>
+        <span class="item-desc">Enables encrypted comms between agents. Used to receive puzzle hints and lore drops. Activate with <kbd>Q</kbd>.</span>
+      </li>
+      <li>
+        <strong>Binary Decoder</strong><br>
+        <span class="item-desc">Auto-scrolls through binary strings to highlight anomalies. Acquired after Puzzle 2.</span>
+      </li>
+      <li>
+        <strong>Access Key</strong><br>
+        <span class="item-desc">Unlocks restricted puzzle nodes. One-time use item found in hidden scenes.</span>
+      </li>
+      <li>
+        <strong>Logic Probe</strong><br>
+        <span class="item-desc">Allows real-time scanning of logical flowcharts. Reveals gate structures.</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
 
 <!-- Footer -->
 <p style="text-align: center; margin-top: 30px;">
@@ -422,4 +512,16 @@ kbd {
       modal.classList.remove("visible");
     }
   });
+
+  function toggleItems() {
+  const panel = document.getElementById("itemsIndex");
+  const btn = document.querySelector(".toggle-items");
+
+  const isOpen = panel.style.display === "block";
+  panel.style.display = isOpen ? "none" : "block";
+  btn.textContent = isOpen
+    ? "Open Tech & Items Dictionary"
+    : "Close Tech & Items Dictionary";
+}
+
 </script>

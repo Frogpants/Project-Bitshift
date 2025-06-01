@@ -250,7 +250,15 @@ kbd {
   display: inline-block;
 }
 
-
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+}
 </style>
 
 
@@ -295,18 +303,28 @@ kbd {
   <img class="modal-image" id="modalImg" />
 </div>
 
-<div class="controls-panel">
-  <h2>Controls</h2>
-  <ul>
-    <li><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> — Move</li>
-    <li><kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> — Look around</li>
-    <li><kbd>Space</kbd> — Enter binary puzzle</li>
-    <li><kbd>F</kbd> — Toggle flashlight</li>
-    <li><kbd>Q</kbd> — Open walkie talkie</li>
-    <li><kbd>Esc</kbd> — Close or pause</li>
-    <li><kbd>Click</kbd> — Interact</li>
-  </ul>
+<div class="centered-container">
+  <!-- Fullscreen Modal -->
+  <div class="modal" id="imageModal">
+    <span class="close">&times;</span>
+    <img class="modal-image" id="modalImg" />
+  </div>
+
+  <!-- Controls Panel -->
+  <div class="controls-panel">
+    <h2>Controls</h2>
+    <ul>
+      <li><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> — Move</li>
+      <li><kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> — Look around</li>
+      <li><kbd>Space</kbd> — Enter binary puzzle</li>
+      <li><kbd>F</kbd> — Toggle flashlight</li>
+      <li><kbd>Q</kbd> — Open walkie talkie</li>
+      <li><kbd>Esc</kbd> — Close or pause</li>
+      <li><kbd>Click</kbd> — Interact</li>
+    </ul>
+  </div>
 </div>
+
 
 
 <script>

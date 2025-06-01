@@ -292,11 +292,6 @@ kbd {
   <span class="dot"></span>
 </div>
 
-<!-- Footer -->
-<p style="text-align: center; margin-top: 30px;">
-  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
-</p>
-
 <!-- Fullscreen Modal -->
 <div class="modal" id="imageModal">
   <span class="close">&times;</span>
@@ -324,6 +319,12 @@ kbd {
     </ul>
   </div>
 </div>
+
+<!-- Footer -->
+<p style="text-align: center; margin-top: 30px;">
+  View the full project on <a href="https://github.com/frogpants/Project-Bitshift" target="_blank" style="color: #89caff;">GitHub</a>.
+</p>
+
 
 
 

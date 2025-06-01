@@ -107,7 +107,7 @@ menu: nav/home.html
     background-color: #fff;
   }
 
-  /* Modal */
+  /* Modal Overlay */
   .modal {
     display: flex;
     position: fixed;
@@ -119,6 +119,7 @@ menu: nav/home.html
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
+    padding: 40px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
@@ -130,10 +131,13 @@ menu: nav/home.html
   }
 
   .modal-image {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    transform: scale(0.8);
+    width: auto;
+    height: auto;
+    max-width: 700px;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9);
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
@@ -180,6 +184,7 @@ menu: nav/home.html
     }
   }
 </style>
+
 
 
 <!-- Carousel -->

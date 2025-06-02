@@ -341,6 +341,20 @@ kbd {
 
 <div class="parallax-bg"></div>
 
+<!-- YouTube Video -->
+<div style="margin-top: 40px; width: 100%; max-width: 900px; display: flex; justify-content: center;">
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; width: 100%; max-width: 800px;">
+    <iframe 
+      src="https://www.youtube.com/embed/x7uzsDoNcd4" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen 
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);">
+    </iframe>
+  </div>
+</div>
+
+
 <!-- Carousel -->
 <div class="carousel">
   <button class="arrow left">&#8592;</button>

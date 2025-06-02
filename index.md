@@ -354,7 +354,7 @@ kbd {
   </div>
 </div>
 
-
+## Preview of the Game
 <!-- Carousel -->
 <div class="carousel">
   <button class="arrow left">&#8592;</button>

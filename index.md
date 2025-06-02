@@ -309,10 +309,14 @@ kbd {
   border: 1px solid #2a2a2a;
   border-radius: 12px;
   color: #ccc;
-  text-align: left;
+  text-align: center;
   box-shadow: 0 0 20px rgba(137, 202, 255, 0.05);
   font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .items-index h2 {
   color: #89caff;

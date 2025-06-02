@@ -559,3 +559,9 @@ kbd {
 }
 
 </script>
+
+## About
+
+This project is an educational game designed to teach the fundamentals of binary through an immersive, hands-on 3D environment. Rather than relying on traditional lectures or textbooks, we’ve created an interactive experience that allows users to learn by doing—manipulating objects, solving puzzles, and visualizing binary concepts in real-time. Our goal is to make binary accessible to anyone, especially those who may struggle with abstract concepts or who have never had the opportunity to explore computer science in depth.
+
+We believe that learning should be intuitive, engaging, and inclusive. That’s why our project is tailored for people who may not yet understand binary but are curious, motivated, and open to learning something new. Whether you're a student, a hobbyist, or just someone who wants to better understand how computers work at a fundamental level, our game provides a friendly and approachable way to get started with binary. Through visual and interactive elements, we hope to spark interest, build confidence, and lay the groundwork for deeper exploration into the world of computing.

@@ -291,13 +291,24 @@ kbd {
 
  .items-dictionary-wrapper {
   margin-top: 50px;
-  max-width: 600px;
-  text-align: center;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
+
+.items-index {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px 30px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #ccc;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(137, 202, 255, 0.05);
+  font-family: monospace;
+}
+
 
 
 .toggle-items {
@@ -317,22 +328,6 @@ kbd {
   color: white;
   transform: scale(1.02);
 }
-
-.items-index {
-  margin-top: 20px;
-  padding: 20px 30px;
-  background: #181818;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  color: #ccc;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(137, 202, 255, 0.05);
-  font-family: monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 
 .items-index h2 {
   color: #89caff;

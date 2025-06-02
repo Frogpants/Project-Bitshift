@@ -8,6 +8,22 @@ menu: nav/home.html
 ---
 
 <style>
+
+  .items-index ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.items-index li {
+  margin-bottom: 18px;
+  line-height: 1.4;
+  text-align: center;
+}
+
   body::before {
   content: "";
   position: fixed;

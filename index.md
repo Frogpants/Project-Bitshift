@@ -8,6 +8,19 @@ menu: nav/home.html
 ---
 
 <style>
+  body::before {
+  content: "";
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  border: 1px solid rgba(137, 202, 255, 0.08);
+  box-shadow: 0 0 25px rgba(137, 202, 255, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
   body {
     font-family: 'Segoe UI', sans-serif;
     background: #1e1e1e;

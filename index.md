@@ -354,7 +354,9 @@ kbd {
   </div>
 </div>
 
-## Preview of the Game
+<h3 style="color: #89caff; text-align: center; margin-top: 60px; font-family: 'Segoe UI', sans-serif;">
+  Snippets of the Game
+</h3>
 <!-- Carousel -->
 <div class="carousel">
   <button class="arrow left">&#8592;</button>

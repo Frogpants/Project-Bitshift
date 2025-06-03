@@ -4,7 +4,8 @@ layout: post
 title: Binary Techniques
 description: Placeholder
 type: ccc
-permalink: /binaryTechniques
+permalink: /binaryTechniques/
+menu: nav/doc.html
 ---
 <style>
     figure {

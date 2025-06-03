@@ -4,7 +4,7 @@ title: Lighting
 description: 
 author: 
 hide: true
-menu: nav/render.html
+menu: nav/doc.html
 ---
 
 # Lighting in 3D Rendering: Normals and Shading
@@ -165,3 +165,4 @@ In per-vertex lighting or per-pixel lighting, the normal vector is interpolated 
 ## Conclusion
 
 Lighting in triangle-based rendering is grounded in vector mathematics, particularly dot products and normalization. The surface normal plays a central role in determining how light interacts with a surface. Understanding the mathematical foundation behind these lighting models allows you to implement realistic and efficient shading in any 3D rendering engine.
+

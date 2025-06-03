@@ -12,6 +12,7 @@ menu: nav/doc.html
         align-content: center;
         margin-left: auto;
         margin-right: auto;
+        display: block;
     }
 </style>
 

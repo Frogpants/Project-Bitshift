@@ -25,6 +25,11 @@ This documentation outlines the core functionality, system architecture, gamepla
 
 ---
 
+
+## Frontend Layout
+![image](https://github.com/user-attachments/assets/12d11622-28c3-499c-b66e-0c1ea7825344)
+
+
 ## Technical Architecture
 
 ### Engine

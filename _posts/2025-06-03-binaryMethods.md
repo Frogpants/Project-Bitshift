@@ -4,6 +4,7 @@ layout: post
 title: Binary Techniques
 description: Placeholder
 type: ccc
+permalink: /binaryTechniques
 ---
 
 # What is Binary?

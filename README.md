@@ -104,7 +104,7 @@ In **BitShift 0101**, you explore a 3D environment filled with buildings and a c
 | Sprint                  | Shift (holds sprint bar)  |
 | Flashlight Toggle       | F                         |
 | Pick Up / Use Walkie-Talkie | Q                    |
-| Interact (Doors / Pedestal) | E                     |
+| Interact (Doors / Puzzles) | E                     |
 | Pause / Main Menu       | Esc                       |
 
 - **Sprint Bar**: Visible on the HUD. Depletes while holding Shift.  

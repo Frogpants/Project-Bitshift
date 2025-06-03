@@ -1,261 +1,198 @@
-# Introduction
+## BitShift 0101 README
 
-Open Coding Society `Pages` is a project designed to support students in their Computer Science and Software Engineering education. It offers a wide range of resources including tech talks, code examples, and educational blogs.
-
-This GitHub Pages repository can be customized by the blogger to support computer science learnings as the student works through the pathway's of using Javascript, Python/Flask, Java/Spring. It is intended to support course work for Computer Sciecne and Software Engineering (CSSE), AP Computer Science Principles (APCSP or CSP), and AP Computer Science 'A' (APCSA, or CSA).
-
-## Student Requirements
-
-HS students will have the opportunity to create their personal GitHub Pages repository as the progress through their coursework.
-
-In general, Students and Instructors are expected to use GitHub Pages to build lessons, complete classroom hacks/challenges and perform exploritory work. This project also offers some JavaScript games and and serves as a frontend to multiple full-stack applications.
-
-Exchange of information from this repository to you personal GitHub Pages can be done in many ways...
-
-1. sharing a file, ie:  `wget "raw-link.ipynb"
-2. creating a template from this repository
-3. creating a fork to be shared by you and team members
-4. etc.
+BitShift 0101 is a first-person exploration and puzzle game centered around binary conversion challenges. Players navigate a detailed environment, solve binary puzzles to progress, and experience atmospheric interactions with tools like flashlights and walkie-talkies.
 
 ---
 
-## History
+### Table of Contents
 
-This project is in its 4th revision (aka 4.0).
-
-The project was initially based on a project called Fastpages. But this project has diverged from those roots into an independent entity, in fact most things (like the build system), are completely different.  The decision to separate from Fastpages was influenced by it's deprecation by the authors.  It is believed by our community that the authors of Fastpages turned toward the support of Quatro.  After that change of direction Fastpages did not align with the Instructors's goals. Thus, Open Coding Society 'Pages' has more of a raw development and classroom blogging purpose.  But, we are greatful to Fastpages for their inspiration.
-
-### License
-
-The Apache license has its roots in Fastpages.  Thus, it carries that license forward.  However, most of the code is likely unrecognizable from those original roots.
-
-### Key Features
-
-- **Code Examples**: Provides practical coding examples in JavaScript, including a platformer game, and frontend code for user databases using Python and Java backends.
-- **Educational Blogs**: Offers instructional content on various topics such as developer tools setup, deployment on AWS, SQL databases, machine learning, and data structures. It utilizes Jupyter Notebooks for interactive lessons and coding challenges, often referred to as `hacks`.
-- **Tools and Integrations**: Features GitHub actions for blog publishing, Utterances for blog commenting, local development support via Makefile and scripts, and styling with the Minima Theme and SASS. It also includes an Agile Toolkit to assist in Student Teaching, Assignment Tracking, Live Reviews, and more.
-
-### Contributions
-
-- **Notable Contributions**: Highlights significant contributions to the project, including theme development, search and tagging functionality, GitHub API integration, and the incorporation of GitHub Projects into GitHub pages. Contributors such as Tirth Thakker, Mirza Beg, and Toby Ledder have played crucial roles in these developments.
-
-- **Blog Contributions**:  Often students contribute articles and blogs to this project.  Their names are typically listed in the front matter of their contributing post.
+- [Project Overview](#project-overview)  
+- [Features](#features)  
+- [Getting Started](#getting-started)  
+  - [Prerequisites](#prerequisites)  
+  - [Installation](#installation)  
+- [Controls](#controls)  
+- [Main Menu](#main-menu)  
+- [Settings](#settings)  
+- [Gameplay & Environment](#gameplay--environment)  
+  - [Tutorial](#tutorial)  
+  - [Binary Elevator Puzzles](#binary-elevator-puzzles)  
+- [Development Team](#development-team)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
 ---
 
-## GitHub Pages setup
+## Project Overview
 
-The absolutes in setup up...
-
-**Activate GitHub Pages Actions**: This step involves enabling GitHub Pages Actions for your project. By doing so, your project will be automatically deployed using GitHub Pages Actions, ensuring that your project is always up to date with the latest changes you push to your repository.
-
-- On the GitHub website for the repository go to the menu: Settings -> Pages ->Build
-- Under the Deployment location on the page, select "GitHub Actions".
-
-**Update `_config.yml`**: You need to modify the `_config.yml` file to reflect your repository's name. This configuration is crucial because it ensures that your project's styling is correctly applied, making your deployed site look as intended rather than unstyled or broken.
-
-```text
-github_repo: "portfolio_2025" 
-baseurl: "/portfolio_2025"
-```
-
-**Set Repository Name in Makefile**: Adjust the `REPO_NAME` variable in your Makefile to match your GitHub repository's name. This action facilitates the automatic updating of posts and notebooks on your local development server, improving the development process.
-
-```make
-# Configuration, override port with usage: make PORT=4200
-PORT ?= 4100
-REPO_NAME ?= portfolio_2025
-LOG_FILE = /tmp/jekyll$(PORT).log
-```
-
-### Tool requirements
-
-All `GitHub Pages` websites are managed on GitHub infrastructure and use GitHub version control.  Each time we change files in GitHub it initiates a GitHub Action, a continuous integration and development toolset, that rebuilds and publishes the site with Jekyll.  
-
-- GitHub uses `Jekyll` to transform your markdown and HTML content into static websites and blogs. [Jekyll](https://jekyllrb.com/).
-- A Linux shell is required to work with this project integration with GitHub Pages, GitHub and VSCode.  Ubuntu is the preferred shell, though MacOS shell is supported as well.  There will be some key setup scripts that follow in the README.
-- Visual Studio Code is the Nighthawk Pages author's preferred code editor and extensible development environment.  VSCode has a rich ecosystem of developer extensions that ease working with GitHub Pages, GitHub, and many programming languages.  Setting up VSCode and extensions will be elaborated upon in this document.
-- An anatomy section in this README will describe GitHub Pages and conventions that are used to organize content and files.  This includes file names, key coding files, metadata tagging of blogs, styling tooling for blogs, etc.
-
-### Development Environment Setup
-
-Comprehensive start. A topic-by-topic guide to getting this project running is published [here](https://nighthawkcoders.github.io/portfolio_2025/devops/tools/home).
-
-Quick start.  A quick start below is a reminder, but is dependent on your knowledge.  Only follow this instruction if you need a refresher.  Always default to the comprehensive start if any problem occurs.
-
-#### Clone Repo
-
-Run these commands to obtain the project, then locate into the project directory with the terminal, install an extensive set of tools, and make.
-
-```bash
-git clone <this-repo> # git clone https://github.com/nighthawkcoders/portfolio_2025.git 
-cd <repo-dir>/scripts # cd portfolio_2025
-```
-
-#### Windows WSL and/or Ubuntu Users
-
-- Execute the script: `./activate_ubuntu.sh`
-
-#### macOS Users
-
-- Execute the script: `./activate_macos.sh`
-
-#### Kasm Cloud Desktop Users
-
-- Execute the script: `./activate.sh`
-
-## Run Server on localhost
-
-To preview the project you will need to "make" the project.
-
-### Bundle install
-
-The very first time you clone run project you will need to run this Ruby command as the final part of your setup.
-
-```bash
-bundle install
-```
-
-### Start the Server  
-
-This requires running terminal commands `make`, `make stop`, `make clean`, or `make convert` to manage the running server.  Logging of details will appear in the terminal.   A `Makefile` has been created in the project to support commands and start processes.
-
-Start the server, this is the best choice for initial and iterative development.  Note. after the initial `make`, you should see files automatically refresh in the terminal on VSCode save.
-
-  ```bash
-  make
-  ```
-
-### Load web application into the Browser
-
-Start the preview server in the terminal,
-The terminal output from `make` shows the server address. "Cmd" or "Ctl" click the http location to open the preview server in a browser. Here is an example Server address message, click on the Server address to load:...
-
-  ```text
-  http://0.0.0.0:4100/portfolio_2025/
-  ```
-
-### Regeneration of web application
-
-Save on ".ipynb" or ".md" file activiates "regeneration". An example terminal message is below.  Refresh the browser to see updates after the message displays.
-
-  ```text
-  Regenerating: 1 file(s) changed at 2023-07-31 06:54:32
-      _notebooks/2024-01-04-cockpit-setup.ipynb
-  ```
-
-### Other "make" commands
-
-Terminal messages are generated from background processes.  At any time, click return or enter in a terminal window to obtain a prompt.  Once you have the prompt you can use the terminal as needed for other tasks.  Always return to the root of project `cd ~/vscode/portfolio_2025` for all "make" actions.
-
-#### Stop the preview server
-
-Stopping the server ends the web server applications running process.  However, it leaves constructed files in the project in a ready state for the next time you run `make`.
-
-  ```bash
-  make stop
-  ```
-
-### Clean the local web application environment
-
-This command will top the server and "clean" all previously constructed files (ie .ipynb -> .md). This is the best choice when renaming files has created duplicates that are visible when previewing work.
-
-  ```bash
-  make clean
-  ```
-
-### Observe build errors
-
-Test Jupyter Notebook conversions (ie .ipynb -> .md), this is the best choice to see if an IPYNB conversion error is occurring.
-
-  ```bash
-  make convert
-  ```
+In **BitShift 0101**, you explore a 3D environment filled with buildings and a central radio tower. Your objective is to ascend through an elevator by solving binary conversion puzzles. Each floor presents a number that must be converted correctly to binary. Mistakes reset your progress for that floor. Once all puzzles on the floor are solved, you can return to the elevator and continue upward.
 
 ---
 
-## Development Support
+## Features
 
-### File Names in "_posts", "_notebooks"
+- **First-Person Movement**  
+  - WASD for locomotion  
+  - Mouse/Arrow Keys for looking around  
+  - Shift to sprint (with a depleting sprint bar)  
 
-There are two primary directories for creating blogs.  The "_posts" directory is for authoring in markdown only.  The "_notebooks" allows for markdown, pythons, javascript and more.
+- **Interactive Tools**  
+  - **Flashlight** (press **F**) to illuminate dark areas  
+  - **Walkie-Talkie** (press **Q**) emits static and hints  
 
-To name a file, use the following structure (If dates are in the future, review your config.yml setting if you want them to be viewed).  Review these naming conventions.
+- **Binary Conversion Puzzles**  
+  - Three puzzles per floor  
+  - Receive a decimal number from a podium  
+  - Convert it to correct binary (e.g., 11 → 1011)  
+  - Incorrect answers reset that floor’s progress  
 
-- For markdown files in _posts:
-  - year-month-day-fileName.md
-    - GOOD EXAMPLE: 2021-08-02-First-Day.md
-    - BAD EXAMPLE: 2021-8-2-first-day.md
-    - BAD EXAMPLE: first-day.md
-    - BAD EXAMPLE: 2069-12-31-First-Day.md
+- **Elevator Mechanic**  
+  - Press **E** to interact with elevator panels  
+  - Doors close until all puzzles are solved  
+  - Progress to the next floor upon completion  
 
-- For Jupyter notebooks in _notebooks:
-  - year-month-day-fileName.ipynb
-    - GOOD EXAMPLE: 2021-08-02-First-Day.ipynb
-    - BAD EXAMPLE: 2021-8-2-first-day.ipynb
-    - BAD EXAMPLE: first-day.ipynb
-    - BAD EXAMPLE: 2069-12-31-First-Day.ipynb
+- **Settings Menu**  
+  - Two game modes:  
+    - **Normal Mode** (default)  
+    - **Epic Mode** (unlocked only after full game completion)  
+  - Music and sound effects volume sliders  
 
-### Tags
+---
 
-Tags are used to organize pages by their tag the way to add tags is to add the following to your front matter such as the example seen here `categories: [Tools]` Each item in the same category will be lumped together to be seen easily on the search page.
+## Getting Started
 
-### Search
+### Prerequisites
 
-All pages can be searched for using the built-in search bar. This search bar will search for any word in the title of a page or in the page itself. This allows for easily finding pages and information that you are looking for. However, sometimes this may not be desirable so to hide a page from the search you need to add `search_exclude: true` to the front matter of the page. This will hide the page from appearing when the viewer uses search.
+- **Operating System**: Windows 10 or later / macOS / Linux  
+- **Processor**: Dual-core CPU (quad-core or higher recommended)  
+- **Memory**: 4 GB RAM  
+- **Graphics**: DirectX 11–compatible GPU (or equivalent OpenGL support)  
+- **Additional**: Unity 2019.4+ runtime (if distributed as a Unity build)
 
-### Navigation Bar
+### Installation
 
-To add pages to the top navigation bar use _config.yml to order and determine which menus you want and how to order them.  Review the_config.yml in this project for an example.
+1. **Download the Latest Build**  
+   - Obtain the executable or packaged build from the project repository’s “Releases” page.
 
-### Blog Page
+2. **Extract Files (if applicable)**  
+   - Unzip the downloaded archive to a folder of your choice.
 
-There is a blog page that has options for images and a description of the page. This page can help the viewer understand what the page is about and what they can expect to find on the page. The way to add images to a page is to have the following front matter `image: /images/file.jpg` and then the name of the image that you want to use. The image must be in the `images` folder. Furthermore, if you would like the file to not show up on the blog page `hide: true` can be added to the front matter.
+3. **Run the Game**  
+   - On Windows:  
+     ```  
+     BitShift_0101.exe  
+     ```  
+   - On macOS/Linux:  
+     ```  
+     ./BitShift_0101.x86_64  
+     ```
 
-### SASS support
+4. **Verify Settings**  
+   - Launch the game, navigate to **Settings**, and adjust volume levels or verify the default Normal Mode.
 
-NIGHTHAWK Pages support a variety of different themes that are each overlaid on top of minima. To use each theme, go to the "_sass/minima/custom-styles.scss" file and simply comment or uncomment the theme you want to use.
+---
 
-To learn about the minima themes search for "GitHub Pages minima" and review the README.
+## Controls
 
-To find a new theme search for "GitHub Pages Themes".
+| Action                  | Key(s)                    |
+|-------------------------|---------------------------|
+| Move Forward            | W                         |
+| Move Backward           | S                         |
+| Strafe Left             | A                         |
+| Strafe Right            | D                         |
+| Look / Turn             | Mouse or Arrow Keys       |
+| Sprint                  | Shift (holds sprint bar)  |
+| Flashlight Toggle       | F                         |
+| Pick Up / Use Walkie-Talkie | Q                    |
+| Interact (Doors / Puzzles) | E                     |
+| Pause / Main Menu       | Esc                       |
 
-### Includes
+- **Sprint Bar**: Visible on the HUD. Depletes while holding Shift.  
+- **Flashlight & Walkie-Talkie**: Use in low-light areas or to gather hints via radio static.
 
-- Nighthawk Pages uses liquid syntax to import many common page elements that are present throughout the repository. These common elements are imported from the _includes directory. If you want to add one of these common elements, use liquid syntax to import the desired element to your file. Here’s an example of the liquid syntax used to import: `{%- include post_list.html -%}` Note that the liquid syntax is surrounded by curly braces and percent signs. This can be used anywhere in the repository.
+---
 
-### Layouts
+## Main Menu
 
-- To use or create a custom page layout, make an HTML page inside the _layouts directory, and when you want to use that layout in a file, use the following front matter `layout: [your layout here]`.  All layouts will be written in liquid to define the structure of the page.
+Upon launching the game, you will see the main menu with three options:
 
-### Metadata
+1. **Play**  
+   - Starts or resumes your current play session in Normal Mode (or Epic Mode if unlocked).  
 
-Metadata, also known as "front matter", is a set of key-value pairs that can provide additional information to GitHub Pages about .md and .ipynb files. This can and probably will be used in other file types (ie doc, pdf) if we add them to the system.
+2. **Settings**  
+   - Adjust game options (mode selection, volume sliders, etc.).
 
-In the front matter, you can also define things like a title and description for the page.  Additional front matter is defined to place content on the "Computer Science Lab Notebook" page.  The `courses:` key will place data on a specific page with the nested `week:` placing data on a specific row on the page.  The `type:` key in "front matter" will place the blog under the plans, hacks(ToDo), and tangibles columns.
+3. **Exit**  
+   - Close the game.
 
-- In our files, the front matter is defined at the top of the page or the first markdown cell.
+---
 
-  - First, open one of the .md or .ipynb files already included in either your _posts|_notebooks folder.
+## Settings
 
-  - In the .md file, you should notice something similar to this at the top of the page. To see this in your .ipynb files you will need to double-click the markdown cell at the top of the file.
+From the main menu, select **Settings** to access:
 
-  ```yaml
-  ---
-  toc: true
-  comments: true
-  layout: post
-  title: Jupyter Python Sample
-  description: Example Blog!!!  This shows code and notes from hacks.
-  type: ccc
-  courses: { csa: {week: 5} }
-  ---
-  ```
+- **Game Mode**  
+  - **Normal Mode** (default): Available immediately.  
+  - **Epic Mode**: Locked until the player completes all floors in Normal Mode.
 
-- The front matter will always have '---' at the top and bottom to distinguish it and each key-value pair will be separated by a ':'.
+- **Music Volume**  
+  - Slider range 0–100%. Default is 100%.  
 
-- Here we can modify things like the title and description.
+- **Sound Effects Volume**  
+  - Slider range 0–100%. Default is 100%.
 
-- The type value will tell us which column this is going to appear under the time box supported pages.  The "ccc" stands for Code, Code, Code.
+> **Note**: During demos or presentations, volumes may be lowered to allow voice commentary.
 
-- The courses will tell us which menu item it will be under, in this case, the `csa` menu, and the `week` tells it what row (week) it will appear under that menu.
+---
+
+## Gameplay & Environment
+
+### Tutorial
+
+When you press **Play** for the first time (or select “Tutorial” within the game environment), you will be guided through:
+
+- **Locomotion Practice**  
+  - Moving with WASD, looking with mouse/arrow keys.  
+  - Sprinting with Shift to observe the sprint bar behavior.  
+
+- **Tool Usage**  
+  - Press **F** to toggle your flashlight in dimly-lit areas.  
+  - Press **Q** to pick up a walkie-talkie that emits radio static—useful for atmospheric effect and potential hints.
+
+The tutorial area is designed to familiarize you with basic movement, flashlight mechanics, and the walkie-talkie prop. Once you exit the tutorial zone, you will arrive at the elevator lobby.
+
+---
+
+### Binary Elevator Puzzles
+
+Each floor of the elevator contains:
+
+1. **Observation Area**  
+   - You arrive on a floor with open elevator doors.  
+   - A crate (or podium) holds a device that displays a **decimal number**.
+
+2. **Puzzle Interaction**  
+   - Approach the podium/panel and press **E** to interact.  
+   - A decimal number appears (for example, **11**).  
+   - You must type the correct binary representation (for 11, type `1011`).
+
+3. **Progress & Reset Mechanic**  
+   - Each floor has **three** distinct puzzle stations.  
+   - Solve all three correctly to unlock the elevator doors.  
+   - If you submit a wrong binary value at any station, your progress on **that floor** resets—you must re-solve all three puzzles.  
+
+4. **Advancing Floors**  
+   - After solving all three, exit the floor and return to the elevator.  
+   - Press **E** at the elevator panel to ride to the next level (doors open automatically once unlocked).  
+   - Repeat the process with new decimal prompts.
+
+Example puzzle sequence on Floor 1:
+
+1. Station A: Decimal **11** → Answer `1011`  
+2. Station B: Decimal **6**  → Answer `0110`  
+3. Station C: Decimal **13** → Answer `1101`  
+4. Station D: Decimal **10** → Answer `1010`  
+
+> The above is illustrative; actual numbers may vary floor by floor.  
+
+**Tip:** Think of basic powers of 2 (1, 2, 4, 8, 16, …) when converting decimals to binary.

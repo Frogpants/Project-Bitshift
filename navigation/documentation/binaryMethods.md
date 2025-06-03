@@ -6,6 +6,13 @@ description: Placeholder
 type: ccc
 permalink: /binaryTechniques
 ---
+<style>
+    figure {
+        align-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 
 # What is Binary?
 Binary is another method of keeping track of numbers using our modern symbols. Most people count using the decimal system, or Base 10. However, computers count using binary, also known as Base 2. I will be referring to decimal and binary as Base 10 and Base 2 respectively to make explantions clearer
@@ -46,19 +53,49 @@ Computers run using binary. Computers are actually millions of little switches t
 ## And Gate
 The first and one of the simplest gates is the and gate, this gate takes two inputs and compares them to eachother, if both inputs are true then the gate outputs true
 
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/andGate.png" alt="Image of and gate notation">
+    <figcaption>The standard notation for a and gate</figcaption>
+</figure>
+
 ## Or Gate
 The second gate we cover is the or gate, this gate checks the inputs and if either one is true then the output is true. This includes when both inputs are true
+
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/orGate.png" alt="Image of or gate notation">
+    <figcaption>The standard notation for a or gate</figcaption>
+</figure>
 
 ## Not Gate
 While not really being a gate, this is akin to a function and takes only one input, and flips it. So a true statement would become false and a false would become true.
 
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/notGate.png" alt="Image of not gate notation">
+    <figcaption>The standard notation for a not gate</figcaption>
+</figure>
+
 ## Nand Gate
 This gate is a combination of the not gate and the and gate, the idea is that it flips outputs of a and gate. Otherwise it functions the exact same.
+
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/nandGate.png" alt="Image of nand gate notation">
+    <figcaption>The standard notation for a nand gate</figcaption>
+</figure>
 
 ## Nor Gate
 Similar to the nand gate, this gate is the combination of a or and a not gate. It takes the same inputs of a or gate and outputs the sameway, but then takes the output and puts it through a not gate
 
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/norGate.png" alt="Image of nor gate notation">
+    <figcaption>The standard notation for a nor gate</figcaption>
+</figure>
+
 ## Xor Gate
 This gate is unique, but can be incredibly useful. A xor gate is a combination of the nand gate and the or gate. It takes two inputs, and when one or the other is true, it will output true. However different to the or gate, when both inputs are true a xor gate will output false similar to the nand gate.
+
+<figure>
+    <img src="{{site.baseurl}}/images/logig_gates/xorGate.png" alt="Image of xor gate notation">
+    <figcaption>The standard notation for a xor gate</figcaption>
+</figure>
 
 These gates make up the logic that a computer uses in order to determine what switches to flip and is the idea behind all the logic a computer handles in its hardware, even in the CPU, RAM, and Motherboard

@@ -196,31 +196,3 @@ Example puzzle sequence on Floor 1:
 > The above is illustrative; actual numbers may vary floor by floor.  
 
 **Tip:** Think of basic powers of 2 (1, 2, 4, 8, 16, …) when converting decimals to binary.
-
----
-
-## Development Team
-
-- **Xavier** – Lead Designer & Modeler  
-- **Justin** – Gameplay Programmer  
-- **Spencer Lyons** – Scrum Master & Technical Producer  
-
-Special thanks to the entire BitShift 0101 team for their contributions in environment art, sound design, and level scripting.
-
----
-
-## Contributing
-
-We welcome pull requests for:
-
-- Additional binary puzzles  
-- New floor designs or environments  
-- Improved puzzle UI/UX feedback (e.g., animations on correct/incorrect input)  
-- Bug fixes and performance optimizations  
-
-**How to Contribute:**
-
-1. Fork the repository.  
-2. Create a new feature branch:  
-   ```bash
-   git checkout -b feature/YourFeatureName

@@ -37,4 +37,27 @@ Computers are not like people and therefore interpret these numbers differently 
 Overflow error is the concept of a number growing so large that it resets or becomes negative. This is due to the nature of the way we store binary numbers in computers. In order to store negative values in computers we make the first digit determine positive or negativity. When the first digit is 0 the number is positive, and vice versa. However, when a number grows large enough, when the math is done it increases the final digit with the carry over. Causing the number to be flipped and be negative. The  number will become more and more negative the more that is added due to it hitting the integer limit.
 
 ## Point-Float Error
-Binary is only so precise, having more symbols makes decimal have more accurate fractional representation, with binary this is simply not possible. For example, computers cannot perfectly represent 0.3. This is due to the fact that we can't represent 3 in one spot with binary, the closest that we can do is 0.111111
+Binary is only so precise, having more symbols makes decimal have more accurate fractional representation, with binary this is simply not possible. For example, computers cannot perfectly represent 0.3. This is due to the fact that we can't represent 3 in one spot with binary, the closest that we can do is 0.01001100110011..., this means that when we add 0.1 and 0.2, which should equal 0.3, we get a this number which is not perfectly accurate. This is generally fixed by cutting the number off after a certain amount of digits so that the excess is not seen. Also known as truncating the number.
+
+# How Do Computers Use Binary to Run?
+Computers run using binary. Computers are actually millions of little switches that swap between on and off to represent data, and are changed using logic. On and off is two states, does that sound familiar? That's right, this is binary. One of the key parts of computers is logic gates. When a logic gate outputs true or false a computer might flip one of it's switches to display a change on the screen or new data stored. We will go over each logic gate here.
+
+## And Gate
+The first and one of the simplest gates is the and gate, this gate takes two inputs and compares them to eachother, if both inputs are true then the gate outputs true
+
+## Or Gate
+The second gate we cover is the or gate, this gate checks the inputs and if either one is true then the output is true. This includes when both inputs are true
+
+## Not Gate
+While not really being a gate, this is akin to a function and takes only one input, and flips it. So a true statement would become false and a false would become true.
+
+## Nand Gate
+This gate is a combination of the not gate and the and gate, the idea is that it flips outputs of a and gate. Otherwise it functions the exact same.
+
+## Nor Gate
+Similar to the nand gate, this gate is the combination of a or and a not gate. It takes the same inputs of a or gate and outputs the sameway, but then takes the output and puts it through a not gate
+
+## Xor Gate
+This gate is unique, but can be incredibly useful. A xor gate is a combination of the nand gate and the or gate. It takes two inputs, and when one or the other is true, it will output true. However different to the or gate, when both inputs are true a xor gate will output false similar to the nand gate.
+
+These gates make up the logic that a computer uses in order to determine what switches to flip and is the idea behind all the logic a computer handles in its hardware, even in the CPU, RAM, and Motherboard

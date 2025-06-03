@@ -4,7 +4,7 @@ title: Poly Graphics
 description: 
 author: 
 hide: true
-menu: nav/doc.html
+menu: nav/render.html
 ---
 
 # 3D Triangle Rendering Pipeline Documentation

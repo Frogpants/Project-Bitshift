@@ -4,7 +4,7 @@ title: Lighting
 description: 
 author: 
 hide: true
-menu: nav/doc.html
+menu: nav/render.html
 ---
 
 # Lighting in 3D Rendering: Normals and Shading

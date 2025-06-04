@@ -4,7 +4,7 @@ title: Optimization
 description: 
 author: 
 hide: true
-menu: nav/doc.html
+menu: nav/render.html
 ---
 
 # 3D Rendering Optimization Techniques: Culling and Performance

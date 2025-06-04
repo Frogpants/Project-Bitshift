@@ -19,11 +19,38 @@ Triangles are the fundamental building blocks in 3D computer graphics. Any 3D su
 
 ---
 
+Here’s your updated section with **code snippets** added for both the **translation to camera space** and **rotation based on camera direction**. The code is written in **Python-style pseudocode** for clarity and adaptability across engines.
+
+---
+
 ## Step 1: Translate to Camera Space
 
 Before we can perform any projection or rotation, we need to reposition all the vertices of our triangles so that the camera becomes the new origin of the coordinate system. This means that every point in the 3D world is expressed relative to the camera’s location. Doing this makes all subsequent calculations simpler and allows us to simulate a camera moving through a 3D space without having to move the world itself.
 
 Given a vertex in the world `(x, y, z)` and a camera located at `(cx, cy, cz)`, the translated position becomes `(x - cx, y - cy, z - cz)`. This operation is performed on all three vertices of each triangle. At this stage, the triangle has been repositioned in space so that it is described from the camera’s point of view, but it has not yet been oriented properly or projected.
+
+```python
+# Example vertex and camera position
+vertex = (x, y, z)
+camera_position = (cx, cy, cz)
+
+# Translate the vertex relative to the camera
+translated = (
+    vertex[0] - camera_position[0],
+    vertex[1] - camera_position[1],
+    vertex[2] - camera_position[2]
+)
+```
+
+For a full triangle:
+
+```python
+def translate_triangle(triangle, camera_pos):
+    return [
+        (v[0] - camera_pos[0], v[1] - camera_pos[1], v[2] - camera_pos[2])
+        for v in triangle
+    ]
+```
 
 ---
 
@@ -33,7 +60,60 @@ After translation, the next step is to rotate the world around the origin so tha
 
 To apply rotation, we use standard rotation matrices. The order of application is important. Usually, yaw is applied first, followed by pitch, and finally roll (if used). Each of these is a simple 2D rotation applied in the relevant plane. For example, yaw rotates points in the XZ plane, while pitch rotates them in the YZ plane. By rotating all translated vertices using these matrices, the world is now aligned with the camera’s orientation. This makes it possible to determine what part of the world is in front of the camera and should be rendered.
 
----
+### Python-style rotation functions:
+
+```python
+import math
+
+def rotate_yaw(vertex, yaw):
+    x, y, z = vertex
+    cos_y = math.cos(yaw)
+    sin_y = math.sin(yaw)
+    return (
+        x * cos_y - z * sin_y,
+        y,
+        x * sin_y + z * cos_y
+    )
+
+def rotate_pitch(vertex, pitch):
+    x, y, z = vertex
+    cos_p = math.cos(pitch)
+    sin_p = math.sin(pitch)
+    return (
+        x,
+        y * cos_p - z * sin_p,
+        y * sin_p + z * cos_p
+    )
+
+def rotate_roll(vertex, roll):
+    x, y, z = vertex
+    cos_r = math.cos(roll)
+    sin_r = math.sin(roll)
+    return (
+        x * cos_r - y * sin_r,
+        x * sin_r + y * cos_r,
+        z
+    )
+```
+
+### Combined rotation:
+
+```python
+def rotate_vertex(vertex, yaw, pitch, roll=0):
+    v = rotate_yaw(vertex, yaw)
+    v = rotate_pitch(v, pitch)
+    v = rotate_roll(v, roll)
+    return v
+```
+
+### Rotate a full triangle:
+
+```python
+def rotate_triangle(triangle, yaw, pitch, roll=0):
+    return [rotate_vertex(v, yaw, pitch, roll) for v in triangle]
+```
+
+These transformations are applied in order **after** translation. The resulting vertices are then ready for projection into 2D screen space.
 
 ## Step 3: Project to 2D Screen
 

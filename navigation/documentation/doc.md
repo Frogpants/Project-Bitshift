@@ -34,9 +34,8 @@ This documentation outlines the core functionality, system architecture, gamepla
 
 ### Engine
 
-- Current implementation: `Unity Engine` (or other)
-- Scripting Language: `C#` (or your language of choice)
-- 3D Rendering: Native engine renderer with support for lighting, camera movement, and collision detection.
+- Scripting Language: `JavaScript`
+- 3D Rendering: Native engine renderer with support for camera movement, polygons, and texturing.
 
 ### Core Systems
 
@@ -95,7 +94,7 @@ This documentation outlines the core functionality, system architecture, gamepla
 ## Requirements
 
 * **Platform**: Windows, macOS, or WebGL-enabled browser
-* **Memory**: 4GB RAM or higher
+* **Memory**: ~4GB RAM or higher
 * **Graphics**: OpenGL 3.3+ or equivalent
 * **Input**: Mouse and keyboard
 
@@ -111,14 +110,8 @@ This documentation outlines the core functionality, system architecture, gamepla
 ### Local Version
 
 1. Clone the repository.
-2. Open the project in Unity Editor (or supported engine).
+2. Open the project in VSCode.
 3. Build and run using your target platform settings.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE.md). You are free to use, modify, and distribute under the terms specified.
 
 ---
 
@@ -126,7 +119,6 @@ This project is licensed under the [MIT License](LICENSE.md). You are free to us
 
 For inquiries, suggestions, or contributions, contact:
 
-* Email: `YourEmail@example.com`
-* Repository: [https://github.com/yourusername/bitshift](https://github.com/yourusername/bitshift)
+* Repository: [https://github.com/Frogpants/Project-Bitshift](https://github.com/Frogpants/Project-Bitshift)
 
 ---

@@ -13,7 +13,7 @@ This is a beginner-friendly guide that walks you through the full process of bui
 
 ---
 
-## Step 0: Setting Up the Canvas
+## Step 1: Setting Up the Canvas
 
 Before we can begin working with 3D math, we need a place to display our output. We'll use the HTML5 `<canvas>` element as our rendering surface, and JavaScript to control it. This allows us to draw 2D shapes on the screen, which we'll use to simulate 3D visuals.
 
@@ -37,7 +37,7 @@ The `canvas` is our drawing surface. We get the 2D rendering context with `getCo
 
 ---
 
-## Step 1: Define Camera and 3D Vectors
+## Step 2: Define Camera and 3D Vectors
 
 In a 3D engine, we need a virtual camera that defines where the viewer is located and what direction they're facing. We also need a way to represent 3D points in space.
 
@@ -57,7 +57,7 @@ The `camera` object stores the position and direction of the camera, as well as 
 
 ---
 
-## Step 2: Degree to Radian Conversion
+## Step 3: Degree to Radian Conversion
 
 JavaScript’s trigonometric functions like `Math.sin()` and `Math.cos()` expect angles in radians. To work with degrees (which are easier for most people to understand), we need a conversion function.
 
@@ -71,7 +71,7 @@ This function allows us to write our angles in degrees and convert them as neede
 
 ---
 
-## Step 3: Create a Vector3 Setter
+## Step 4: Create a Vector3 Setter
 
 To simplify updating our global vector during each transformation step, we use a helper function. This function makes the code cleaner by avoiding repetitive assignments.
 
@@ -87,7 +87,7 @@ This method modifies the global `vector` object that all transformation steps ac
 
 ---
 
-## Step 4: Translate Relative to the Camera
+## Step 5: Translate Relative to the Camera
 
 In 3D graphics, translating an object relative to the camera involves subtracting the camera's position from the point's position. This effectively moves the entire world around the camera, allowing the camera to act as the origin of the scene.
 
@@ -104,7 +104,7 @@ This translation step is always the first operation in transforming a 3D point f
 
 ---
 
-## Step 5: Apply 3D Rotation
+## Step 6: Apply 3D Rotation
 
 Rotations simulate a camera turning in different directions. We apply separate rotations for each axis.
 
@@ -151,7 +151,7 @@ Each of these functions applies a standard 2D rotation formula to the relevant c
 
 ---
 
-## Step 6: Project 3D to 2D
+## Step 7: Project 3D to 2D
 
 Once we’ve translated and rotated a point, we project it from 3D space onto the 2D screen. This step uses perspective projection, which makes distant objects appear smaller.
 
@@ -169,7 +169,7 @@ The projection simulates how a real-world camera lens works and determines where
 
 ---
 
-## Step 7: Combine All Steps
+## Step 8: Combine All Steps
 
 This function combines translation, rotation, and projection to turn a 3D point into a 2D point on the screen.
 
@@ -188,7 +188,7 @@ This is the core function of your 3D engine. It allows you to take any 3D coordi
 ### Usage Example
 
 ```js
-const point3D = { x: 2, y: 1, z: 10 };
+const point3D = { x: 0, y: -50, z: 200 };
 const screen = goTo(point3D.x, point3D.y, point3D.z);
 ctx.fillRect(screen.x, screen.y, 4, 4);
 ```
@@ -212,11 +212,4 @@ To solidify your understanding, try completing the following:
 
 You’ve now built a foundational 3D engine from scratch using JavaScript. You learned how to move points relative to a camera, apply 3D rotations, and project 3D coordinates onto a 2D screen.
 
-This is just the beginning. From here, you can expand your engine to include:
-
-* Rendering 3D lines and faces
-* Hidden surface removal
-* Lighting and shading
-* Physics or animation
-
-With this knowledge, you're well on your way to understanding how modern 3D engines function under the hood.
+Up next we'll learn how to render our points onto the screen [here]({{site.baseurl}}/navigation/documentation/tutorial/render)!

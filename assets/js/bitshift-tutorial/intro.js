@@ -127,10 +127,10 @@ function project3DTo2D(x,y,z) {
     // This function flattens 3D spacial coordinates into 2D spacial coordinates
     // In more simple terms, it converts 3D coordinates in a world to 2D onscreen coordinates
 
-    const tempX = halfWidth * focalLength * (x / z);
-    const tempY = halfWidth * focalLength * (y / z); // You can replace halfWidth with halfHeight but your output will look squashed
+    const tempX = halfWidth + halfWidth * focalLength * (x / z);
+    const tempY = halfHeight + halfWidth * focalLength * (y / z); // You can replace halfWidth with halfHeight but your output will look squashed
 
-    return (tempX, tempY); // we can return this value rather than making it a Vector3 since it is the last function required
+    return {x: tempX, y: tempY}; // we can return this value rather than making it a Vector3 since it is the last function required
 };
 
 // Step 4: Final Function

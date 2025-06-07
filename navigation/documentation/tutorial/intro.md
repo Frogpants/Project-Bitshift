@@ -212,3 +212,5 @@ To solidify your understanding, try completing the following:
 You’ve now built a foundational 3D engine from scratch using JavaScript. You learned how to move points relative to a camera, apply 3D rotations, and project 3D coordinates onto a 2D screen.
 
 Up next we'll learn how to render our points onto the screen [here]({{site.baseurl}}/navigation/documentation/tutorial/render)!
+
+The full code for this section can be found here: 

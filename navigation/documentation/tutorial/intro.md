@@ -201,10 +201,9 @@ This example transforms a single point and draws it as a 2D square on the canvas
 
 To solidify your understanding, try completing the following:
 
-* Rewrite the engine using objects or classes instead of relying on global variables.
 * Add keyboard controls to move the camera position and direction.
 * Extend the engine to draw lines between multiple points to form wireframes.
-* Experiment with rendering multiple points at varying depths to understand perspective scaling.
+* Experiment with rendering multiple points at varying distances.
 
 ---
 
